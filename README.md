@@ -1,4 +1,6 @@
-Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la version 4. Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4).
+Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
+
+Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Je ne les ait pas encore regardés, je rajouterai ici les liens de ceux qui me paraissent intéressants.
 
 Installation
 ------------
@@ -30,5 +32,5 @@ rvm rubygems current                  # je ne sais pas si c'est nécéssaire
 
 #### Etape 3: installation de Rails
 ```
-gem install rails                     # install the latest version (use -v to choose version)
+gem install rails -v 4.1.6
 ```
