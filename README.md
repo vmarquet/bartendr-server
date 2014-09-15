@@ -1,6 +1,10 @@
 Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
 
-Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Je ne les ait pas encore regardés, je rajouterai ici les liens de ceux qui me paraissent intéressants.
+Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Quelques un que j'ai regardés:
+
+* Rails par l'exemple, Michael Hartl -> très bien expliqué, ça donne une vue d'ensemble, mais un peu dépassé (pour RoR 3)
+* Rails 4 in Action, 2nd edition -> direct dans le vif du sujet, pas très expliqué
+
 
 Installation
 ------------
@@ -34,3 +38,6 @@ rvm rubygems current                  # je ne sais pas si c'est nécéssaire
 ```
 gem install rails -v 4.1.6
 ```
+
+#### Etape 4: problèmes rencontrés
+En testant la création d'un nouveau projet avec `rails new`, il manquait la gem json. A installer avec `gem install json -v '1.8.1'`, puis repartir de zéro avec un nouveau `rails new`.
