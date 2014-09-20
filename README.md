@@ -1,9 +1,13 @@
 Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
 
-Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Quelques un que j'ai regardés:
+Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Quelques sources que j'ai utilisées:
 
-* Rails par l'exemple, Michael Hartl -> très bien expliqué, ça donne une vue d'ensemble, mais un peu dépassé (pour RoR 3)
-* Rails 4 in Action, 2nd edition -> direct dans le vif du sujet, pas très expliqué
+* [site officiel](http://guides.rubyonrails.org/getting_started.html)
+  -> clair et concis
+* [Rails par l'exemple, Michael Hartl](https://www.railstutorial.org/book)
+  -> expliqué très en détails, en partant de zéro, ça donne une vue d'ensemble
+* Rails 4 in Action, 2nd edition
+  -> direct dans le vif du sujet, pas très expliqué, pas pour débuter mais plutôt pour approfondir
 
 
 Installation
@@ -41,3 +45,22 @@ gem install rails -v 4.1.6
 
 #### Etape 4: problèmes rencontrés
 En testant la création d'un nouveau projet avec `rails new`, il manquait la gem json. A installer avec `gem install json -v '1.8.1'`, puis repartir de zéro avec un nouveau `rails new`.
+
+
+
+Technos à connaître
+-------------------
+* HTML
+* CSS (ou [SCSS](http://sass-lang.com/))
+* JavaScript (ou [CoffeeScript](http://coffeescript.org/)), 
+    * tuto: [voir ici](http://fr.openclassrooms.com/informatique/cours/dynamisez-vos-sites-web-avec-javascript), en particulier la partie 2 sur la manipulation du HTML
+    * [AJAX](http://fr.openclassrooms.com/informatique/cours/dynamisez-vos-sites-web-avec-javascript/l-ajax-qu-est-ce-que-c-est)
+    * quelques librairies JavaScript pour la "dataviz":
+      [ici](http://www.mathieurobin.com/2012/05/realiser-des-graphiques-avec-javascript/),
+      [ici](http://selection.datavisualization.ch/)
+* [ChromeCast](http://blog.matthewdfuller.com/2014/05/chromecast-development-tutorial-your.html)
+  (apparemment l'API est en JavaScript)
+* Ruby
+    * [tuto développer.com](http://pbnaigeon.developpez.com/tutoriel/ruby/premiers-pas-avec-ruby/#LIII)
+    * [Tuto Rails de Michael Hartl, chapitre 4](https://www.railstutorial.org/book/rails_flavored_ruby)
+
