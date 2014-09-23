@@ -1,3 +1,34 @@
+Planning
+========
+* 30 septembre:
+    * [fiche d'évaluation](http://learning.esiea.fr/mod/assign/view.php?id=1925)
+    * [carnet de bord](http://learning.esiea.fr/mod/assign/view.php?id=1926)
+* 31 octobre: [dossier de cadrage](http://learning.esiea.fr/mod/assign/view.php?id=1918)
+    * mission
+    * objectifs
+    * Quoi (ce sont les spécifications) ?
+    * Comment  (c'est la charte) ?
+    * Pourquoi (c'est l'étude d'opportunité) ?
+    * Quand (c'est le planning) ?
+* 10 novembre: [livrable comm'](http://learning.esiea.fr/mod/assign/view.php?id=1922)
+* fin mars:
+    * soutenance
+        * [powerpoint](http://learning.esiea.fr/mod/assign/view.php?id=1921)
+        * [vidéo](http://learning.esiea.fr/mod/assign/view.php?id=1923)
+    * [rapport final](http://learning.esiea.fr/mod/assign/view.php?id=1920)
+    * [carnet de bord](http://learning.esiea.fr/mod/assign/view.php?id=1924)
+* liens:
+  [moodle](http://learning.esiea.fr/course/view.php?id=114)
+
+
+
+Outils
+======
+
+* [repo git serveur](https://github.com/vmarquet/bartendr-server)
+* [repo git app iOS](https://github.com/vmarquet/bartendr-iphone)
+* [dropbox](https://www.dropbox.com/sh/msamrpxkaoui7ee/AABq-7guhfGODuuogzNg-yNLa?dl=0)
+
 Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
 
 Vous pourrez trouver des eBooks [ici](https://torrentz.eu/search?f=rails+4). Quelques sources que j'ai utilisées:
@@ -58,7 +89,7 @@ Technos à connaître
     * quelques librairies JavaScript pour la "dataviz":
       [ici](http://www.mathieurobin.com/2012/05/realiser-des-graphiques-avec-javascript/),
       [ici](http://selection.datavisualization.ch/)
-* [ChromeCast](http://blog.matthewdfuller.com/2014/05/chromecast-development-tutorial-your.html)
+* [ChromeCast](http://chromecasthub.com/developers/)
   (apparemment l'API est en JavaScript)
 * Ruby
     * [tuto développer.com](http://pbnaigeon.developpez.com/tutoriel/ruby/premiers-pas-avec-ruby/#LIII)
