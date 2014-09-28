@@ -21,12 +21,13 @@ Planning
   [moodle](http://learning.esiea.fr/course/view.php?id=114)
 
 
-
 Outils
 ======
 
 * [repo git serveur](https://github.com/vmarquet/bartendr-server)
 * [repo git app iOS](https://github.com/vmarquet/bartendr-iphone)
+* [Google drive](https://drive.google.com/folderview?id=0B31-CIvNW1LddUh2TDR2dFRUZDg&usp=sharing)
+    * [carnet de bord](https://docs.google.com/document/d/1W5y5b67vsxV-OWjjCv3ynAZ-iVZyKB47eH1HxgX0gTk/edit?usp=sharing)
 * [dropbox](https://www.dropbox.com/sh/msamrpxkaoui7ee/AABq-7guhfGODuuogzNg-yNLa?dl=0)
 
 Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
@@ -50,7 +51,7 @@ Installation
 
 ### Résumé
 
-#### Etape 1: installation de rvm
+#### Etape 1: installation de rvm (Ryby Version Manager)
 ```
 sudo apt-get install curl
 curl -L get.rvm.io | bash -s stable   # download and install rvm
@@ -74,7 +75,12 @@ rvm rubygems current                  # je ne sais pas si c'est nécéssaire
 gem install rails -v 4.1.6
 ```
 
-#### Etape 4: problèmes rencontrés
+#### Etape 4: dépendances
+```
+sudo apt-get install nodejs           # JavaScript runtime
+```
+
+#### Etape 5: problèmes rencontrés
 En testant la création d'un nouveau projet avec `rails new`, il manquait la gem json. A installer avec `gem install json -v '1.8.1'`, puis repartir de zéro avec un nouveau `rails new`.
 
 
@@ -82,7 +88,9 @@ En testant la création d'un nouveau projet avec `rails new`, il manquait la gem
 Technos à connaître
 -------------------
 * HTML
-* CSS (ou [SCSS](http://sass-lang.com/))
+* CSS
+  (ou [SCSS](http://sass-lang.com/))
+  (ou [LESS](http://lesscss.org/) pour [Twitter Bootstrap](http://getbootstrap.com/))
 * JavaScript (ou [CoffeeScript](http://coffeescript.org/)), 
     * tuto: [voir ici](http://fr.openclassrooms.com/informatique/cours/dynamisez-vos-sites-web-avec-javascript), en particulier la partie 2 sur la manipulation du HTML
     * [AJAX](http://fr.openclassrooms.com/informatique/cours/dynamisez-vos-sites-web-avec-javascript/l-ajax-qu-est-ce-que-c-est)
@@ -94,4 +102,11 @@ Technos à connaître
 * Ruby
     * [tuto développer.com](http://pbnaigeon.developpez.com/tutoriel/ruby/premiers-pas-avec-ruby/#LIII)
     * [Tuto Rails de Michael Hartl, chapitre 4](https://www.railstutorial.org/book/rails_flavored_ruby)
-
+* git: connaître les bases: `git add`, `git commit`, `git pull`, `git push`
+    * [tuto plus complet](https://www.atlassian.com/fr/git/tutorial/git-basics)
+* web design
+    * [Twitter Bootstrap](http://getbootstrap.com/)
+        * comment l'inclure dans Rails:
+          voir [ici](https://github.com/seyhunak/twitter-bootstrap-rails)
+          et [ici](http://railscasts.com/episodes/328-twitter-bootstrap-basics)
+    * [Bootstrap Material Design](https://fezvrasta.github.io/bootstrap-material-design/)
