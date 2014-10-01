@@ -77,7 +77,14 @@ gem install rails -v 4.1.6
 
 #### Etape 4: dépendances
 ```
-sudo apt-get install nodejs           # JavaScript runtime
+# JavaScript runtime: NodeJS
+sudo apt-get install nodejs  # ATTENTION, les versions dans les repos sont vieilles
+# pour une version plus récente: télécharger ici: http://nodejs.org/
+# extraire l'archive .tgz, et:
+./configure && make && sudo make install
+
+# Optionnel: CoffeeScript
+sudo npm install -g coffee-script  # nécéssite une version récente de NodeJS
 ```
 
 #### Etape 5: problèmes rencontrés
