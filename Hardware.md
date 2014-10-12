@@ -14,6 +14,9 @@ Matériel nécéssaire
     [ce modèle](http://www.adafruit.com/products/814) est compatible Access Point et ne nécéssite pas de hub. Voir aussi [ce modèle](https://www.adafruit.com/product/1012), qui est censé avoir une plus grande portée, attention, il faudra peut-être un hub USB autoalimenté
     * d'après [ici](http://itsacleanmachine.blogspot.fr/2013/02/wifi-access-point-with-raspberry-pi.html),
       [ce modèle](http://www.amazon.com/gp/product/B002WBX9C6/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B002WBX9C6&linkCode=as2&tag=itsacleanmach-20) gère l'Access point
+    * [modèle suggéré par Palik](http://www.amazon.fr/gp/product/B00EZOQFHO/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1)
+        * ajouter le repo `deb http://ftp.uk.debian.org/debian/ wheezy main non-free`
+        * installer `firmware-ralink`
     * autres:
         * voir [ici](http://elinux.org/RPi_USB_Wi-Fi_Adapters) pour la liste des clé wifi compatibles avec le Raspberry Pi
         * tuto [ici](http://elinux.org/RPI-Wireless-Hotspot)

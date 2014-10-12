@@ -25,10 +25,9 @@ Outils
 ======
 
 * [repo git serveur](https://github.com/vmarquet/bartendr-server)
-* [repo git app iOS](https://github.com/vmarquet/bartendr-iphone)
+* [repo git app iOS](https://github.com/vmarquet/bartendr-client-iphone)
 * [Google drive](https://drive.google.com/folderview?id=0B31-CIvNW1LddUh2TDR2dFRUZDg&usp=sharing)
     * [carnet de bord](https://docs.google.com/document/d/1W5y5b67vsxV-OWjjCv3ynAZ-iVZyKB47eH1HxgX0gTk/edit?usp=sharing)
-* [dropbox](https://www.dropbox.com/sh/msamrpxkaoui7ee/AABq-7guhfGODuuogzNg-yNLa?dl=0)
 
 Afin de profiter des dernières améliorations de Ruby on Rails, je propose d'utiliser la **version 4.1.6**. Merci d'utiliser exactement cette version afin de ne pas créer de conflits. Quand à Ruby, je pense que n'importe quelle version supérieure à la version 2 fera l'affaire. Pour vérifier la version sur votre machine, taper `ruby -v` ou `rails -v`.
 
