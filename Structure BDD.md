@@ -3,19 +3,23 @@ Structure
 
 * "articles" => 1 table pour stocker les boissons (ou plus généralement les produits vendus)
     * name:string => nom
-    * price:decimal => prix
+    * price:decimal{10,2} => prix (10 chiffres, dont 2 après la virgule)
     * description:string => description
-    * category:string? => catégorie de produit (bière / vin / ...)(faire une table pour ça ?)
+    * category:string/references => catégorie de produit (bière / vin / ...)(faire une table pour ça ?)
     * picture_url:string => lien vers une image / une photo représentant le produit (définir un dossier où chercher les images par défaut)(il faudra probablement plusieurs tailles d'images différentes...)
-    * last_update:datetime => date de dernière modif du produit dans la table (pour synchro avec l'app)
+    * created_at:datetime => date de création
+        * created_at : Automatically gets set to the current date and time when the record is first created.
+    * updated_at:datetime => date de dernière modif du produit dans la table (pour synchro avec l'app)
+        * updated_at : Automatically gets set to the current date and time whenever the record is updated.
     * availability:boolean => disponibilité (pouvoir signaler qu'un produit est indisponible)
 
 * "transactions" => 1 table par transaction (achat)
-    * reference:? => référence des produits achetés (clé étrangère)
+    * article_references:references => références des produits achetés (clé étrangère)
+        * rajouter `has_many :articles` dans le code de la classe Transaction (?)
     * comments:string => commentaire pour le barman (avec/sans glaçons, au shaker, pas à la cuillère, ...)
     * price:decimal => prix (ne pas se fier à celui de la table des produits, car celui-ci a pu changer entre-temps)
-    * date:datetime => date de la transaction
-    * client_id:? => identifiant client (clé étrangère) ?
+    * created_at:datetime => date de la transaction
+    * client_id:references => identifiant client (clé étrangère) ?
     * is_paid:boolean                => payé par le client
     * is_preparation_started:boolean => préparation de la commande lancée
     * is_preparation_done:boolean    => préparation de la commande terminée
@@ -23,7 +27,7 @@ Structure
 
 * 1 table pour les clients ? Cela permettrait de faire des offres de fidélisation
     * identification: inscription / utilisation de cookies / adresse IP / via l'ID Paypal / ... ?
-
+    * liste des commandes passées par le client: `has_many :transactions` (?)
 
 
 Gestion des droits
@@ -48,4 +52,11 @@ Gestion des droits
 Liens utiles
 ------------
 * [liste des types en Rails](http://stackoverflow.com/questions/3260345/list-of-rails-model-types)
+
+* [tuto Active Records](http://guides.rubyonrails.org/active_record_basics.html) (gestion du M de MVC en Rails)
+	* pour des explications sur le type "references" (associations entre tables), voir partie 6 [ici](http://guides.rubyonrails.org/getting_started.html)
+    * pour des explications sur les associations entre tables, voir [ici](http://guides.rubyonrails.org/association_basics.html)
+
+* tuto pour un système d'authentification: voir partie 9 [ici](http://guides.rubyonrails.org/getting_started.html)
+
 
