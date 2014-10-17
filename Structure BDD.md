@@ -3,15 +3,17 @@ Structure
 
 * "articles" => 1 table pour stocker les boissons (ou plus généralement les produits vendus)
     * name:string => nom
-    * price:decimal{10,2} => prix (10 chiffres, dont 2 après la virgule)
+    * price:decimal => prix (10 chiffres, dont 2 après la virgule)
+        * ajouter `, :precision => 8, :scale => 2` dans le fichier db/migrate/... correspondant
     * description:string => description
     * category:string/references => catégorie de produit (bière / vin / ...)(faire une table pour ça ?)
     * picture_url:string => lien vers une image / une photo représentant le produit (définir un dossier où chercher les images par défaut)(il faudra probablement plusieurs tailles d'images différentes...)
-    * created_at:datetime => date de création
-        * created_at : Automatically gets set to the current date and time when the record is first created.
-    * updated_at:datetime => date de dernière modif du produit dans la table (pour synchro avec l'app)
-        * updated_at : Automatically gets set to the current date and time whenever the record is updated.
     * availability:boolean => disponibilité (pouvoir signaler qu'un produit est indisponible)
+    * autres colonnes qui seront crées automatiquement:
+        * created_at:datetime => date de création
+            * Automatically gets set to the current date and time when the record is first created.
+        * updated_at:datetime => date de dernière modif du produit dans la table (pour synchro avec l'app)
+            * Automatically gets set to the current date and time whenever the record is updated.
 
 * "transactions" => 1 table par transaction (achat)
     * article_references:references => références des produits achetés (clé étrangère)
