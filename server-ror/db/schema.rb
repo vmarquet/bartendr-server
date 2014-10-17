@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20141017134558) do
 
   create_table "articles", force: true do |t|
     t.string   "name"
-    t.decimal  "price"
+    t.decimal  "price",        precision: 8, scale: 2
     t.string   "description"
     t.string   "category"
     t.string   "picture_url"
