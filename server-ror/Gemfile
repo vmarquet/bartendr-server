@@ -41,3 +41,9 @@ gem 'spring',        group: :development
 # to deal with authentification
 gem 'devise'
 
+# Twitter Bootstrap
+# and dependencies (LESS preprocessor)
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
+
