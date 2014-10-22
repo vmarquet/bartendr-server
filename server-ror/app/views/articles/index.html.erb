@@ -1,35 +1,44 @@
-<h1>Listing articles</h1>
-
-<table>
+<%- model_class = Article -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Picture url</th>
-      <th>Availability</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
+      <th><%= model_class.human_attribute_name(:picture_url) %></th>
+      <th><%= model_class.human_attribute_name(:availability) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @articles.each do |article| %>
       <tr>
+        <td><%= link_to article.id, article_path(article) %></td>
         <td><%= article.name %></td>
         <td><%= article.price %></td>
         <td><%= article.description %></td>
         <td><%= article.category %></td>
         <td><%= article.picture_url %></td>
         <td><%= article.availability %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_article_path(article), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      article_path(article),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_article_path,
+            :class => 'btn btn-primary' %>
