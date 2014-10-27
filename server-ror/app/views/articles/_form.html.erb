@@ -16,14 +16,14 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
+    <%= f.label :nom, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
     <%= error_span(@article[:name]) %>
   </div>
   <div class="control-group">
-    <%= f.label :price, :class => 'control-label' %>
+    <%= f.label "prix (€)", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :price, :class => 'form-control' %>
     </div>
@@ -38,7 +38,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :category, :class => 'control-label' %>
+    <%= f.label :catégorie, :class => 'control-label' %>
     <div class="controls">
       <%= select(:article, :category, Article.categoryList, {}) %>
     </div>
@@ -46,9 +46,9 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :availability, :class => 'control-label' %>
+    <%= f.label :disponibilité, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :availability, :class => 'form-control' %>
+      <%= f.check_box :availability, :class => 'form-control' %>
     </div>
     <%= error_span(@article[:availability]) %>
   </div>

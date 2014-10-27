@@ -8,11 +8,13 @@ class Article < ActiveRecord::Base
 	validates_length_of :category, maximum: 40
 	validates_length_of :picture_url, maximum: 255
 
-	# we check that some values aren't nil
-	validates :name, presence: true
-	validates :price, presence: true
-	validates :availability, presence: true
+	# we check that some fields aren't nil
+	validates_presence_of :name, :price
 
+	# we check that the price is correct
+	validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ },
+	          :numericality => {:greater_than => 0.0, :less_than => 999999.99}
+	
 
 	# declaration of class methods
 	class << self
@@ -36,3 +38,4 @@ class Article < ActiveRecord::Base
 	end
 	
 end
+

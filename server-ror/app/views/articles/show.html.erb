@@ -4,18 +4,21 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
   <dd><%= @article.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @article.price %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:prix) %>:</strong></dt>
+  <dd><%= number_to_currency(@article.price, :locale => :fr) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @article.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:category) %>:</strong></dt>
+  <dt><strong><%= model_class.human_attribute_name(:catégorie) %>:</strong></dt>
   <dd><%= @article.category %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:picture_url) %>:</strong></dt>
-  <dd><%= @article.picture_url %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:availability) %>:</strong></dt>
-  <dd><%= @article.availability %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:disponibilité) %>:</strong></dt>
+  <dd>
+    <% if @article.availability == true %>
+      <font color="green"> ✔ </font>
+    <% else %>
+      <font color="red"> ✘ </font>
+    <% end %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
@@ -25,5 +28,5 @@
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               article_path(@article),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
               :class => 'btn btn-danger' %>
