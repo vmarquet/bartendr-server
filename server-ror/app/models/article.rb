@@ -13,4 +13,26 @@ class Article < ActiveRecord::Base
 	validates :price, presence: true
 	validates :availability, presence: true
 
+
+	# declaration of class methods
+	class << self
+		# the list of categories we suggest to the user
+		def categoryList
+			categories = [
+				"Apéritif",
+				"Bière",
+				"Café",
+				"Cocktail",
+				"Digestif",
+				"Soda",
+				"Vin",
+				"Autres"
+			]
+			return categories
+		end
+		# Nota Bene: this list is only used to suggest options to the user.
+		# When inserting articles into the database, we do not check that the
+		# article category is in this list
+	end
+	
 end

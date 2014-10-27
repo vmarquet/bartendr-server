@@ -10,7 +10,6 @@
       <th><%= model_class.human_attribute_name(:price) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:category) %></th>
-      <th><%= model_class.human_attribute_name(:picture_url) %></th>
       <th><%= model_class.human_attribute_name(:availability) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -23,7 +22,6 @@
         <td><%= article.price %></td>
         <td><%= article.description %></td>
         <td><%= article.category %></td>
-        <td><%= article.picture_url %></td>
         <td><%= article.availability %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

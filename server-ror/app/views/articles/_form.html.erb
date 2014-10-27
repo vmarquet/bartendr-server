@@ -1,6 +1,6 @@
 <%= form_for @article, :html => { :class => "form-horizontal article" } do |f| %>
 
-    <% if @article.errors.any? %>
+  <% if @article.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h3>
@@ -36,20 +36,15 @@
     </div>
     <%= error_span(@article[:description]) %>
   </div>
+
   <div class="control-group">
     <%= f.label :category, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :category, :class => 'form-control' %>
+      <%= select(:article, :category, Article.categoryList, {}) %>
     </div>
     <%= error_span(@article[:category]) %>
   </div>
-  <div class="control-group">
-    <%= f.label :picture_url, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :picture_url, :class => 'form-control' %>
-    </div>
-    <%= error_span(@article[:picture_url]) %>
-  </div>
+
   <div class="control-group">
     <%= f.label :availability, :class => 'control-label' %>
     <div class="controls">
