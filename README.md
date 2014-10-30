@@ -1,15 +1,7 @@
+[The Holy Bible](http://api.rubyonrails.org/)
+
 Planning
 ========
-* 30 septembre:
-    * [fiche d'évaluation](http://learning.esiea.fr/mod/assign/view.php?id=1925)
-    * [carnet de bord](http://learning.esiea.fr/mod/assign/view.php?id=1926)
-* 31 octobre: [dossier de cadrage](http://learning.esiea.fr/mod/assign/view.php?id=1918)
-    * mission
-    * objectifs
-    * Quoi (ce sont les spécifications) ?
-    * Comment  (c'est la charte) ?
-    * Pourquoi (c'est l'étude d'opportunité) ?
-    * Quand (c'est le planning) ?
 * 10 novembre: [livrable comm'](http://learning.esiea.fr/mod/assign/view.php?id=1922)
 * fin mars:
     * soutenance
@@ -50,7 +42,7 @@ Installation
 
 ### Résumé
 
-#### Etape 1: installation de rvm (Ryby Version Manager)
+#### Etape 1: installation de rvm (Ruby Version Manager)
 ```
 sudo apt-get install curl
 curl -L get.rvm.io | bash -s stable   # download and install rvm
