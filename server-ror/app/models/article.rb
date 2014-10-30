@@ -1,3 +1,28 @@
+##########
+# we want to redefine the way ActiveRecord should handle the price
+# (because the way people will enter the price in the form depends on their country)
+# to do this, we add a new method to String class and to ActiveRecord class
+class String
+	def to_delocalized_decimal
+		delimiter = I18n::t('number.format.delimiter')
+		separator = I18n::t('number.format.separator')
+		self.gsub(/[#{delimiter}#{separator}]/, delimiter => '', separator => '.')
+	end
+end
+
+class ActiveRecord::Base
+	def self.attr_localized(*fields)
+		fields.each do |field|
+			define_method("#{field}=") do |value|
+				self[field] = value.is_a?(String) ? value.to_delocalized_decimal : value
+			end
+		end
+	end
+end
+# cf http://stackoverflow.com/questions/6541209/
+##########
+
+
 class Article < ActiveRecord::Base
 	# we add validations before adding entries to the database
 	# see db/migrate/20141025154223_add_constraints_to_articles.rb
@@ -41,29 +66,4 @@ class Article < ActiveRecord::Base
 	end
 	
 end
-
-
-##########
-# we want to redefine the way ActiveRecord should handle the price
-# (because the way people will enter the price in the form depends on their country)
-# to do this, we add a new method to String class and to ActiveRecord class
-class String
-	def to_delocalized_decimal
-		delimiter = I18n::t('number.format.delimiter')
-		separator = I18n::t('number.format.separator')
-		self.gsub(/[#{delimiter}#{separator}]/, delimiter => '', separator => '.')
-	end
-end
-
-class ActiveRecord::Base
-	def self.attr_localized(*fields)
-		fields.each do |field|
-			define_method("#{field}=") do |value|
-				self[field] = value.is_a?(String) ? value.to_delocalized_decimal : value
-			end
-		end
-	end
-end
-# cf http://stackoverflow.com/questions/6541209/
-##########
 
