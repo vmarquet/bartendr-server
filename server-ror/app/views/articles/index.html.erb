@@ -7,9 +7,9 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nom) %></th>
-      <th><%= model_class.human_attribute_name(:prix) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:catégorie) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:prix) %></th>
       <th><div title="Disponibilité"><%= model_class.human_attribute_name(:dispo) %></div></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,9 +19,9 @@
       <tr>
         <td><%= link_to article.id, article_path(article) %></td>
         <td><%= article.name %></td>
-        <td><%= number_to_currency(article.price, :locale => :fr) %></td>
-        <td><%= article.description %></td>
         <td><%= article.category %></td>
+        <td><%= article.description %></td>
+        <td><%= number_to_currency(article.price, :locale => :fr) %></td>
         <td>
           <% if article.availability == true %>
             <font color="green"> ✔ </font>

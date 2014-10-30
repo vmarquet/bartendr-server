@@ -22,13 +22,15 @@
     </div>
     <%= error_span(@article[:name]) %>
   </div>
+
   <div class="control-group">
-    <%= f.label "prix (€)", :class => 'control-label' %>
+    <%= f.label :catégorie, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :price, :class => 'form-control' %>
+      <%= select(:article, :category, Article.categoryList, {}) %>
     </div>
-    <%= error_span(@article[:price]) %>
+    <%= error_span(@article[:category]) %>
   </div>
+
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
@@ -38,11 +40,11 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :catégorie, :class => 'control-label' %>
+    <%= f.label "prix (€)", :class => 'control-label' %>
     <div class="controls">
-      <%= select(:article, :category, Article.categoryList, {}) %>
+      <%= f.text_field :price, :class => 'form-control' %>
     </div>
-    <%= error_span(@article[:category]) %>
+    <%= error_span(@article[:price]) %>
   </div>
 
   <div class="control-group">

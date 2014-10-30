@@ -6,19 +6,24 @@
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
   <dd><%= @article.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:prix) %>:</strong></dt>
-  <dd><%= number_to_currency(@article.price, :locale => :fr) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @article.description %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:catégorie) %>:</strong></dt>
   <dd><%= @article.category %></dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @article.description %></dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:prix) %>:</strong></dt>
+  <dd><%= number_to_currency(@article.price, :locale => :fr) %></dd>
+
   <dt><strong><%= model_class.human_attribute_name(:disponibilité) %>:</strong></dt>
   <dd>
     <% if @article.availability == true %>
       <font color="green"> ✔ </font>
     <% else %>
       <font color="red"> ✘ </font>
-    <% end %></dd>
+    <% end %>
+  </dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
