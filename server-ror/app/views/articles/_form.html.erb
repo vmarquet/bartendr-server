@@ -16,49 +16,95 @@
   <% end %>
 
   <div class="control-group">
-    <%= f.label :nom, :class => 'control-label' %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.label :nom, :class => 'control-label' %>
+      </div>
+    </div>
     <div class="controls">
-      <%= f.text_field :name, :class => 'form-control' %>
+      <div class="row">
+        <div class="col-xs-10 col-sm-11 col-xs-offset-1 col-sm-offset-0">
+          <%= f.text_field :name, :class => 'form-control' %>
+        </div>
+      </div> 
     </div>
     <%= error_span(@article[:name]) %>
   </div>
 
   <div class="control-group">
-    <%= f.label :catégorie, :class => 'control-label' %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.label :catégorie, :class => 'control-label' %>
+      </div>
+    </div> 
     <div class="controls">
-      <%= select(:article, :category, Article.categoryList, {}) %>
+      <div class="row">
+        <div class="col-xs-10 col-sm-11 col-xs-offset-1 col-sm-offset-0">
+          <%= select(:article, :category, Article.categoryList, {}) %>
+        </div>
+      </div> 
     </div>
     <%= error_span(@article[:category]) %>
   </div>
 
   <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.label :description, :class => 'control-label' %>
+      </div>
+    </div>
     <div class="controls">
-      <%= f.text_field :description, :class => 'form-control' %>
+      <div class="row">
+        <div class="col-xs-10 col-sm-11 col-xs-offset-1 col-sm-offset-0">
+          <%= f.text_field :description, :class => 'form-control' %>
+        </div>
+      </div>
     </div>
     <%= error_span(@article[:description]) %>
   </div>
 
   <div class="control-group">
-    <%= f.label "prix (€)", :class => 'control-label' %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.label "prix (€)", :class => 'control-label' %>
+      </div>
+    </div>
     <div class="controls">
-      <%= f.text_field :price, :class => 'form-control' %>
+      <div class="row">
+        <div class="col-xs-10 col-sm-11 col-xs-offset-1 col-sm-offset-0">
+          <%= f.text_field :price, :class => 'form-control' %>
+        </div>
+      </div>
     </div>
     <%= error_span(@article[:price]) %>
   </div>
 
   <div class="control-group">
-    <%= f.label :disponibilité, :class => 'control-label' %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.label :disponibilité, :class => 'control-label' %>
+      </div>
+    </div>
     <div class="controls">
-      <%= f.check_box :availability, :class => 'form-control' %>
+      <div class="row">
+        <div class="col-xs-1 col-xs-offset-1 col-sm-offset-0">
+          <%= f.check_box :availability, :class => 'form-control' %>
+        </div>
+      </div>
     </div>
     <%= error_span(@article[:availability]) %>
   </div>
 
   <br>
 
-  <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <div class="control-group">
+    <div class="row">
+      <div class="col-xs-offset-1 col-sm-offset-0">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
             articles_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
 
 <% end %>
