@@ -1,7 +1,6 @@
 /* CSS file for the navigation bar, 
    it only affects elements inside the element with id="navbar" */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #navbar {
   background: #3f86c2;
   width: auto;
@@ -11,9 +10,10 @@
   float: left; /* at the left of the menu bar */
   text-decoration: none;
   padding: 13px 0px 0px 15px; /* top right bottom left */
-  font-size: 30px;
+  font-size: 28px;
   color: #ffffff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
 }
 #navbar ul {
   list-style: none;
@@ -41,7 +41,7 @@
   text-decoration: none;
   display: block;
   padding: 15px 25px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Arial', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 14px;

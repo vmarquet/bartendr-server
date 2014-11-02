@@ -1,0 +1,53 @@
+<%= form_for @order, :html => { :class => "form-horizontal order" } do |f| %>
+
+    <% if @order.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @order.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :is_paid, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_paid, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:is_paid]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_preparation_started, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_preparation_started, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:is_preparation_started]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_preparation_done, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_preparation_done, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:is_preparation_done]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :is_served, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :is_served, :class => 'form-control' %>
+    </div>
+    <%= error_span(@order[:is_served]) %>
+  </div>
+
+  <br>
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            orders_path, :class => 'btn btn-default' %>
+
+<% end %>

@@ -21,7 +21,11 @@ module BartendrServer
     config.i18n.default_locale = :fr
     # on met le français comme langue par défaut
     # ça va automatiquement rechercher les traductions dans config/locales/fr.yml
-
     # cf http://guides.rubyonrails.org/i18n.html
+
+
+    # to deal with a bug caused by "devise" gem
+    config.app_generators.scaffold_controller = :scaffold_controller
+    # cf https://github.com/rails/rails/issues/17290
   end
 end

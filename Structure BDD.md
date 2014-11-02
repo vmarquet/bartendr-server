@@ -11,17 +11,18 @@ Structure
     * __availability__:boolean => disponibilité (pouvoir signaler qu'un produit est indisponible)
         
 
-* "transactions" => table pour stocker les transaction (achat de plusieurs items)
+* "orders" => table pour stocker les commandes (achat de plusieurs items)
     * rajouter `has_many :items` ([cf doc](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#method-i-has_many)) dans le code de la classe Transaction (transaction.rb)
-    * __client_id__:references => identifiant client (clé étrangère) ?
     * __is_paid__:boolean                => payé par le client
     * __is_preparation_started__:boolean => préparation de la commande lancée
     * __is_preparation_done__:boolean    => préparation de la commande terminée
     * __is_served__:boolean              => servi au client
+    * rajouter `belongs_to :client` => identifiant client (clé étrangère) ?
+        * à rajouter quand on ajoutera une table "clients"
 
 
 * "items" => table pour stocker la liste des articles commandés (plusieurs par transaction)
-    * rajouter `belongs_to :transactions` ([cf doc](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#method-i-belongs_to)) dans le code de la classe Item (item.rb)
+    * rajouter `belongs_to :order` ([cf doc](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html#method-i-belongs_to)) dans le code de la classe Item (item.rb)
     * rajouter `has_one :article` => référence vers l'article commandé (clé étrangère)
     * __price__:decimal => prix (ne pas se fier à celui de la table Articles, car celui-ci a pu changer depuis le moment de la commande, et ça fausserait les stats)
     * __comments__:string => commentaire pour le barman (avec/sans glaçons, [au shaker, pas à la cuillère](https://www.youtube.com/watch?v=OUUq5mRCimo), ...)
