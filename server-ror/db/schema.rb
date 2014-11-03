@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025154223) do
+ActiveRecord::Schema.define(version: 20141102174945) do
 
   create_table "articles", force: true do |t|
     t.string   "name",         limit: 40,                                        null: false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20141025154223) do
     t.string   "category",     limit: 40
     t.string   "picture_url"
     t.boolean  "availability",                                    default: true, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.boolean  "is_paid"
+    t.boolean  "is_preparation_started"
+    t.boolean  "is_preparation_done"
+    t.boolean  "is_served"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

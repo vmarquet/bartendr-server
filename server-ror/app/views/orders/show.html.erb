@@ -1,0 +1,52 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:is_paid) %>:</strong></dt>
+  <dd>
+    <% if @order.is_paid == true %>
+      <font color="green"> ✔ </font>
+    <% else %>
+      <font color="red"> ✘ </font>
+    <% end %>
+  </dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:is_preparation_started) %>:</strong></dt>
+    <dd>
+    <% if @order.is_preparation_started == true %>
+      <font color="green"> ✔ </font>
+    <% else %>
+      <font color="red"> ✘ </font>
+    <% end %>
+  </dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:is_preparation_done) %>:</strong></dt>
+    <dd>
+    <% if @order.is_preparation_done == true %>
+      <font color="green"> ✔ </font>
+    <% else %>
+      <font color="red"> ✘ </font>
+    <% end %>
+  </dd>
+
+  <dt><strong><%= model_class.human_attribute_name(:is_served) %>:</strong></dt>
+    <dd>
+    <% if @order.is_served == true %>
+      <font color="green"> ✔ </font>
+    <% else %>
+      <font color="red"> ✘ </font>
+    <% end %>
+  </dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              orders_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_order_path(@order), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              order_path(@order),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
