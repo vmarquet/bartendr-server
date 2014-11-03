@@ -24,6 +24,9 @@ end
 
 
 class Article < ActiveRecord::Base
+	has_many :items
+
+
 	# we add validations before adding entries to the database
 	# see db/migrate/20141025154223_add_constraints_to_articles.rb
 

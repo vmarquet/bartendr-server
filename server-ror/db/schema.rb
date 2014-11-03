@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103122103) do
+ActiveRecord::Schema.define(version: 20141103124757) do
 
   create_table "articles", force: true do |t|
     t.string   "name",         limit: 40,                                        null: false
@@ -29,7 +29,12 @@ ActiveRecord::Schema.define(version: 20141103122103) do
     t.string   "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
+    t.integer  "article_id"
   end
+
+  add_index "items", ["article_id"], name: "index_items_on_article_id"
+  add_index "items", ["order_id"], name: "index_items_on_order_id"
 
   create_table "orders", force: true do |t|
     t.boolean  "is_paid"
