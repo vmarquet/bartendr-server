@@ -16,9 +16,9 @@ GET /articles.json HTTP/1.1
 Host: localhost
 ```
 
-* pour connaître la liste des clés (JSON = paires clé/valeur), voir le nom des colonnes dans la table articles dans [ce fichier](server-ror/db/schema.rb). Les colonnes principales sont:
+* pour connaître la liste des clés (JSON = paires clé/valeur), voir le nom des colonnes dans la table articles dans [ce fichier](../server-ror/db/schema.rb). Les colonnes principales sont:
     * name: le nom de la boisson
     * category: la catégorie de la boisson (bière / cocktail / ...)
-        * voir [ici](server-ror/app/models/article.rb) pour les catégories possibles
+        * voir [ici](../server-ror/app/models/article.rb) pour les catégories possibles
     * description: la description de la boisson (max 255 caractères)
     * availability: si la boisson est dispo en stocks ou pas
