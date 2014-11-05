@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 	# before we can add items to the order
 	# cf http://stackoverflow.com/questions/2859384
 
-	has_one :article
+	belongs_to :article
 	validates_presence_of :article
 
 	# TODO:
