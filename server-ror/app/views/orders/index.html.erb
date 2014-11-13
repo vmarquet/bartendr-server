@@ -56,6 +56,13 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
         </td>
+        <tr>
+          <td>
+          <% order.items.each do | item | %>
+            <%= item.article.name %>
+            <% end %>
+          </td>
+        </tr>
       </tr>
     <% end %>
   </tbody>
