@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 
 # le fichier css pour la barre de navigation tout en haut
 Rails.application.config.assets.precompile += %w( navbar.css )
+Rails.application.config.assets.precompile += %w( custom.css )

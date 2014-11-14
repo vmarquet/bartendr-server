@@ -1,0 +1,4 @@
+/* rules for the index page of the orders controller */
+#orders-index-table .order {
+	background-color: #DDDDDD;
+}
