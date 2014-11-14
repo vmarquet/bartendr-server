@@ -37,7 +37,7 @@
           <td width="160px">Prix total: 
             <% totalprice=0 %>
             <% order.items.each do | item | %>
-              <% totalprice = totalprice + item.article.price %>
+              <% totalprice = totalprice + item.price %>
             <% end %>
             <%= number_to_currency(totalprice, :locale => :fr) %>
           </td>
@@ -52,7 +52,7 @@
                     <td>Article: <strong><%= item.article.name %></strong></td>
                     <td width="45%"><%= item.comments %></td>
                     <td>Quantité: <strong>1</strong></td>
-                    <td width="150px">Prix: <%= number_to_currency(item.article.price, :locale => :fr) %></td>
+                    <td width="150px">Prix: <%= number_to_currency(item.price, :locale => :fr) %></td>
                   </tr>
                 <% end %>
               </tbody>
