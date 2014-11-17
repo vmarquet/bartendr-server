@@ -4,7 +4,7 @@
 <% @orders.each_with_index do |order, index| %>
 	{
 		"order_id": <%= order.id %>,
-		"created_at": "<%= order.created_at %>",
+		"created_at": "<%= order.created_at.strftime("%H:%M") %>",
 		"is_paid": <%= order.is_paid %>,
 		"is_served": <%= order.is_served %>,
 		"items": [

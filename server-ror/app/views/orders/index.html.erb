@@ -1,65 +1,128 @@
 <%- model_class = Order -%>
 
+<!-- the javascript code to update the page -->
+<!-- this should certainly be in another file in app/views/orders/,
+     but I dont know how to include it -->
+<% content_for :head do %>
+  <script type="text/javascript">
+    var timeSinceLastUpdate = 0;
+    function getOrdersJSON() {
+      $.ajax({
+        type: 'GET',
+        url: "http://0.0.0.0:3000/orders.json",
+        data: { get_param: 'value' },
+        dataType: 'json',
+        success: function (data) {
+          console.log("DEBUG: Success");
+          updateOrdersHTML(data);
+          timeSinceLastUpdate = 0;
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          console.log("DEBUG: Failure");
+          console.log("       " + xhr.status);
+          console.log("       " + thrownError);
+        }
+      });
+    }
+
+    function updateOrdersHTML(data) {
+
+      var orders_html = ' \
+        <table class="table table-striped" id="orders-index-table"> \
+          <tbody>'
+
+      var i = 0;
+      while (i < data.length) {
+        order = data[i];
+
+        orders_html += ' \
+          <div class="items"> \
+            <!-- une ligne pour l\'en-tête de la commande --> \
+            <tr class="order"> \
+              <td>Commande n° ' + order.order_id + '</td> \
+              <td>Passée à ' + order.created_at + '</td> \
+              <td>Table n° TODO</td> \
+              <td>Payé: '
+
+        if (order.is_paid.toString().localeCompare("true") == 0)
+          orders_html += '<font color="green"> ✔ </font>'
+        else
+          orders_html += '<font color="red"> ✘ </font>'
+
+
+        orders_html += '</td> \
+              <td>Servi: '
+
+        if (order.is_served.toString().localeCompare("true") == 0)
+          orders_html += '<font color="green"> ✔ </font>'
+        else
+          orders_html += '<font color="red"> ✘ </font>'
+
+        var j = 0; var price = 0;
+        while (j < order.items.length) {
+          price += order.items[j].price;
+          j++;
+        }
+
+        orders_html += '</td> \
+              <td>[BOUTON SUPPR]</td> \
+              <td width="160px">Prix total: ' + price + '</td> \
+            </tr>'
+
+        orders_html += ' \
+            <!-- une ligne pour contenir un sous-tableau avec les items commandés --> \
+            <tr> \
+              <td colspan="7"> \
+                <table class="table"> \
+                  <tbody>'
+        
+        j = 0;
+        while (j < order.items.length) {
+          item = order.items[j];
+          orders_html += ' \
+                    <tr> \
+                      <td>Article: <strong>' + item.article + '</strong></td> \
+                      <td width="45%">' + item.comments + '</td> \
+                      <td>Quantité: <strong>1</strong></td> \
+                      <td width="150px">Prix: ' + item.price + '</td> \
+                    </tr>'
+          j++;
+        }
+
+        orders_html += ' \
+                  </tbody> \
+                </table> \
+              </td> \
+            </tr> \
+          </div>'
+
+        i++;
+      }
+
+      orders_html += ' \
+          </tbody> \
+        </table>'
+
+      $("#orders-index-table").html(orders_html);
+    }
+
+    getOrdersJSON();  // we launch it the first time at the loading of the page
+    setInterval(getOrdersJSON, 20000); // interval in milliseconds
+
+    // to display the time since last update
+    function updateTimeSinceLastUpdate() {
+      $("#time-since-last-update").html('<div id="time-since-last-update"> \
+        Dernière mise à jour: il y a ' + timeSinceLastUpdate + ' secondes</div>');
+      timeSinceLastUpdate++;
+    }
+    setInterval(updateTimeSinceLastUpdate, 1000);
+  </script>
+<% end %>
+
 <div class="page-header">
   <h1>Commandes</h1>
 </div>
 
-<table class="table table-striped" id="orders-index-table">
-  <tbody>
-    <% @orders.each do |order| %>
-      <div class="items">
-        <!-- une ligne pour l'en-tête de la commande -->
-        <tr class="order">
-          <td>Commande n° <%= order.id %></td>
-          <td>Passée à <%= order.created_at.strftime("%H:%M") %></td>
-          <td>Table n° TODO</td>
-          <td>Payé: 
-            <% if order.is_paid == true %>
-              <font color="green"> ✔ </font>
-            <% else %>
-              <font color="red"> ✘ </font>
-            <% end %>
-          </td>
-          <td>Servi: 
-            <% if order.is_served == true %>
-              <font color="green"> ✔ </font>
-            <% else %>
-              <font color="red"> ✘ </font>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                order_path(order), :method => :delete,
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", 
-                :default => 'Êtes-vous sûr de vouloir supprimer cette commande ?')) },
-                :class => 'btn btn-xs btn-danger' %>
-          </td>
-          <td width="160px">Prix total: 
-            <% totalprice=0 %>
-            <% order.items.each do | item | %>
-              <% totalprice = totalprice + item.price %>
-            <% end %>
-            <%= number_to_currency(totalprice, :locale => :fr) %>
-          </td>
-        </tr>
-        <!-- une ligne pour contenir un sous-tableau avec les items commandés -->
-        <tr>
-          <td colspan="7">
-            <table class="table">
-              <tbody>
-                <% order.items.each do |item| %>
-                  <tr>
-                    <td>Article: <strong><%= item.article.name %></strong></td>
-                    <td width="45%"><%= item.comments %></td>
-                    <td>Quantité: <strong>1</strong></td>
-                    <td width="150px">Prix: <%= number_to_currency(item.price, :locale => :fr) %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </div>
-    <% end %>
-  </tbody>
-</table>
+<div id="orders-index-table"></div>
+
+<div id="time-since-last-update"></div>
