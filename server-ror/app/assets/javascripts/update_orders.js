@@ -77,8 +77,12 @@ function updateOrdersHTML(data) {
     }
 
     orders_html += '</td> \
-          <td>[BOUTON SUPPR]</td> \
-          <td width="160px">Prix total: ' + price + '</td> \
+          <td> \
+            <a class="btn btn-xs btn-danger" \
+               data-confirm="Êtes-vous sûr de vouloir supprimer cette commande ?" \
+               data-method="delete" href="/orders/' + order.order_id + '" rel="nofollow">Supprimer \
+            </a></td> \
+          <td width="160px">Prix total: ' + price + ' €</td> \
         </tr>'
 
     orders_html += ' \
@@ -96,7 +100,7 @@ function updateOrdersHTML(data) {
                   <td>Article: <strong>' + item.article + '</strong></td> \
                   <td width="45%">' + item.comments + '</td> \
                   <td>Quantité: <strong>1</strong></td> \
-                  <td width="150px">Prix: ' + item.price + '</td> \
+                  <td width="150px">Prix: ' + item.price + ' €</td> \
                 </tr>'
       j++;
     }
