@@ -54,21 +54,36 @@ function updateOrdersHTML(data) {
           <td>Commande n° ' + order.order_id + '</td> \
           <td>Passée à ' + order.created_at + '</td> \
           <td>Table n° TODO</td> \
-          <td>Payé: '
+          <td>';
 
-    if (order.is_paid.toString().localeCompare("true") == 0)
-      orders_html += '<font color="green"> ✔ </font>'
-    else
-      orders_html += '<font color="red"> ✘ </font>'
+    var icon; var button_type;
+    if (order.is_paid.toString().localeCompare("true") == 0) {
+      icon = '<font color="white"> ✔ payé </font>';
+      button_type = 'btn-success';
+    }
+    else {
+      icon = '<font color="red"> ✘ non payé </font>';
+      button_type = 'btn-default';
+    }
 
+    orders_html += '<a class="btn btn-xs ' + button_type + '" \
+                       data-remote="true" data-method="patch" \
+                       href="/orders/' + order.order_id + '/ispaid" rel="nofollow"> \
+                       ' + icon + '</a></td><td>';
 
-    orders_html += '</td> \
-          <td>Servi: '
+    if (order.is_served.toString().localeCompare("true") == 0) {
+      icon = '<font color="white"> ✔ servi </font>';
+      button_type = 'btn-success';
+    }
+    else {
+      icon = '<font color="red"> ✘ non servi </font>';
+      button_type = 'btn-default';
+    }
 
-    if (order.is_served.toString().localeCompare("true") == 0)
-      orders_html += '<font color="green"> ✔ </font>'
-    else
-      orders_html += '<font color="red"> ✘ </font>'
+    orders_html += '<a class="btn btn-xs ' + button_type + '" \
+                       data-remote="true" data-method="patch" \
+                       href="/orders/' + order.order_id + '/isserved" rel="nofollow"> \
+                       ' + icon + '</a>';
 
     var j = 0; var price = 0;
     while (j < order.items.length) {
