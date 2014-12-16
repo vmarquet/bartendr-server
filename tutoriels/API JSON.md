@@ -7,20 +7,18 @@ Liste des catégories
 `GET /categories.json`
 
 ```
-{
-	[
-		{
-			id: 0,
-			name: "Bières",
-			picture: "..."
-		},
-		{
-			id: 1,
-			name: "Cocktail",
-			picture: "..."
-		}
-	]
-}
+[
+	{
+		"id": 0,
+		"name": "Bières",
+		"picture": "..."
+	},
+	{
+		"id": 1,
+		"name": "Cocktails",
+		"picture": "..."
+	}
+]
 ```
 
 Nota bene: ici, l'id est le numéro de la ligne dans la table "categories".
@@ -34,24 +32,22 @@ Liste des articles d'une catégorie
 `GET /categories/[ID].json`
 
 ```
-{
-	[
-		{
-			name: "Bière blonde",
-			description: "Une bière blonde est une bière désignée ainsi de par sa couleur.",
-			price: 10.00,
-			size: "...",
-			picture: "..."
-		},
-		{
-			name: "Bière brune",
-			description: "La bière brune est une bière de couleur brune, du brun acajou au noir ébène, obtenue grâce à l'utilisation de malt plus ou moins torréfié.",
-			price: 9.00,
-			size: "...",
-			picture: "..."
-		}
-	]
-}
+[
+	{
+		"name": "Bière blonde",
+		"description": "Une bière blonde est une bière désignée ainsi de par sa couleur.",
+		"price": 10.00,
+		"size": "...",
+		"picture": "..."
+	},
+	{
+		"name": "Bière brune",
+		"description": "La bière brune est une bière de couleur brune, du brun acajou au noir ébène, obtenue grâce à l'utilisation de malt plus ou moins torréfié.",
+		"price": 9.00,
+		"size": "...",
+		"picture": "..."
+	}
+]
 ```
 
 Nota bene: ces fichiers JSON ne contiendront que les articles étant disponibles, afin d'éviter de surcharger la bande passante. Le filtrage selon la disponibilité se fera donc côté serveur.
