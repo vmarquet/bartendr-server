@@ -4,6 +4,9 @@
   <h1>Commandes</h1>
 </div>
 
+<% if @orders.size == 0 %>
+    <p>Aucune commande en attente.</p>
+<% end %>
 <table class="table table-striped" id="orders-index-table">
   <tbody>
     <% @orders.each do |order| %>
