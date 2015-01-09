@@ -19,17 +19,16 @@
 				BarTendr
 			</div>
 			<ul>
-				<li><a href='/'>Accueil</a></li>
-				<li><a href="/orders">Commandes</a></li>
-				<li><a href="/articles">Articles</a></li>
-				<p class="navbar-text pull-right">
 				<% if user_signed_in? %>
-					Logged in as <strong><%= current_user.email %></strong>.
-					<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-					<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+					<li><a href='/'>Accueil</a></li>
+					<li><%= link_to "Commandes", orders_path %></li>
+					<li><%= link_to "Articles", articles_path %></li>
+					<li><%= current_user.email %></li>
+					<li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+					<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
 				<% else %>
-					<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
-					<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+					<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+					<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li>
 				<% end %>
 			</ul>
 		</div>
