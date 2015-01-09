@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :orders
+  patch '/orders/:id/ispaid', to: 'orders#ispaid'
+  patch '/orders/:id/isserved', to: 'orders#isserved'
 
   resources :articles
 

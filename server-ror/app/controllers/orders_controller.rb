@@ -51,6 +51,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  # PATCH /orders/1/ispaid
+  def ispaid
+    @order = Order.find(params[:id])
+    @order.is_paid = ! @order.is_paid
+    @order.save!
+  end
+
+  # PATCH /orders/1/isserved
+  def isserved
+    @order = Order.find(params[:id])
+    @order.is_served = ! @order.is_served
+    @order.save!
+  end
+
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
