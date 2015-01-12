@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, :except => [:index, :show]
   # TODO: pour le ':except', il faudrait n'autoriser que les .json et pas les .html
+  load_and_authorize_resource
 
   # GET /articles
   # GET /articles.json

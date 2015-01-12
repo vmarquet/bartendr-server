@@ -32,6 +32,14 @@
 			</ul>
 		</div>
 
+		<% unless notice.nil? %>
+			<p class="notice alert alert-info" role="alert"><%= notice %></p>
+		<% end %>
+
+		<% unless alert.nil? %>
+			<p class="alert alert-danger" role="alert"><%= alert %></p>
+		<% end %>
+
 		<div class="container">
 			<div class="row">
 				<div class="span12">
@@ -39,11 +47,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- debug features -->
-		<!--<p class="notice"><%= notice %></p>-->
-		<p class="alert"><%= alert %></p>
-		<!-- to display a popup in case something went wrong -->
 
 	</body>
 
