@@ -24,6 +24,8 @@ end
 
 
 class Article < ActiveRecord::Base
+	resourcify
+
 	has_many :items
 
 
