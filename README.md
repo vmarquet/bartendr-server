@@ -2,7 +2,6 @@
 
 Planning
 ========
-* 10 novembre: [livrable comm'](http://learning.esiea.fr/mod/assign/view.php?id=1922)
 * fin mars:
     * soutenance
         * [powerpoint](http://learning.esiea.fr/mod/assign/view.php?id=1921)

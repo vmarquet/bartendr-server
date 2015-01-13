@@ -41,24 +41,6 @@ Nota Bene: pour toutes les tables, les 2 colonnes suivantes sont crées automati
     * Automatically gets set to the current date and time whenever the record is updated.
 
 
-Gestion des droits
-------------------
-
-* un compte admin (root) pour nous les devs, accès en écriture à tout
-
-* un compte "patron du bar":
-    * accès en écriture à la table des boissons, pour qu'il puisse changer le prix, ajouter des nouveaux produits, ...
-    * accès en lecture à la table des clients et des commandes
-
-* un compte pour le barman / les serveurs:
-    * accès en écriture à la table des transactions, pour pouvoir indiquer si la commande a été préparée, servie, ...
-    * éventuellement accès en écriture à la table des boissons pour indiquer si une boisson devient indisponible (rupture de stock)
-
-* l'accès des clients:
-    * accès en lecture à la table des boissons
-    * pas d'accès aux autres tables
-
-
 
 Liens utiles
 ------------
@@ -67,7 +49,4 @@ Liens utiles
 * [tuto Active Records](http://guides.rubyonrails.org/active_record_basics.html) (gestion du M de MVC en Rails)
 	* pour des explications sur le type "references" (associations entre tables), voir partie 6 [ici](http://guides.rubyonrails.org/getting_started.html)
     * pour des explications sur les associations entre tables, voir [ici](http://guides.rubyonrails.org/association_basics.html)
-
-* tuto pour un système d'authentification: voir partie 9 [ici](http://guides.rubyonrails.org/getting_started.html)
-
 
