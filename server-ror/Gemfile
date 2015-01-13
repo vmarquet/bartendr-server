@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 
 # to deal with authentification
 gem 'devise'
+gem 'cancancan', '~> 1.10'
+gem 'rolify'
 
 # Twitter Bootstrap
 # and dependencies (LESS preprocessor)

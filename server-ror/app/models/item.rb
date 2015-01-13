@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+	resourcify
+	
 	belongs_to :order
 	validates_presence_of :order
 	# Nota bene: given that here we use `validates_presence_of :order`,
