@@ -11,7 +11,9 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:prix) %></th>
       <th><div title="Disponibilité"><%= model_class.human_attribute_name(:dispo) %></div></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% if can? :update, Article or can? :destroy, Article %>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -29,20 +31,29 @@
             <font color="red"> ✘ </font>
           <% end %>
         </td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_article_path(article), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      article_path(article),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <% if can? :update, Article or can? :destroy, Article %>
+          <td>
+            <% if can? :update, Article %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_article_path(article), :class => 'btn btn-default btn-xs' %>
+            <% end %>
+            <% if can? :destroy, Article %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        article_path(article),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<% if can? :create, Article %>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
             new_article_path,
             :class => 'btn btn-primary' %>
+<% end %>
+
