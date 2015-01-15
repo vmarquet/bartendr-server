@@ -34,6 +34,7 @@ Liste des articles d'une catégorie
 ```
 [
 	{
+		"id": 5,
 		"name": "Bière blonde",
 		"description": "Une bière blonde est une bière désignée ainsi de par sa couleur.",
 		"price": 10.00,
@@ -41,6 +42,7 @@ Liste des articles d'une catégorie
 		"picture": "..."
 	},
 	{
+		"id": 6;
 		"name": "Bière brune",
 		"description": "La bière brune est une bière de couleur brune, du brun acajou au noir ébène, obtenue grâce à l'utilisation de malt plus ou moins torréfié.",
 		"price": 9.00,
@@ -50,7 +52,26 @@ Liste des articles d'une catégorie
 ]
 ```
 
+Nota bene: ici, l'id est le numéro de l'article dans la table "articles". De même que pour les catégories, rien ne garantit que l'ID commence à 0, ni qu'ils se suivent.
+
 Nota bene: ces fichiers JSON ne contiendront que les articles étant disponibles, afin d'éviter de surcharger la bande passante. Le filtrage selon la disponibilité se fera donc côté serveur.
+
+
+Envoyer la liste des articles commandés
+---------------------------------------
+
+Requête à faire: à définir. POST ?
+
+```
+{
+	"table": 10,
+	"articles": [
+		5, 8, 12
+	]
+}
+```
+
+NB: si un même article est commandé plusieurs fois, juste mettre plusieurs fois d'affilée son id.
 
 
 Comment accéder à l'API JSON (groupe appli mobile)
