@@ -69,21 +69,21 @@ Content-length: 164
 {
 	"order": {
 		"table": 10,
-		"articles": [
+		"items_attributes": [
 			{
-				"id": 5,
-				"comment": "au shaker"
+				"article_id": 5,
+				"comments": "au shaker"
 			},
 			{
-				"id": 8,
-				"comment": "pas à la cuillère"
+				"article_id": 8,
+				"comments": "pas à la cuillère"
 			}
 		]
 	}
 }
 ```
 
-NB: si un même article est commandé plusieurs fois, juste mettre plusieurs fois d'affilée son id.
+NB: si un même article est commandé plusieurs fois, créer plusieurs items différents, c'est plus simple à gérer en Rails que de préciser le nombre pour chaque.
 
 NB: ATTENTION: pour un caractère non ASCII, il faut compter le nombre d'octets qu'il prend dans le `Content-length`, pas juste 1, par exemple `à` ou `è` prenne chacun 2 octets en UTF8. Si le `Content-length:` n'est pas valide, le parsing côté serveur va échouer, et la commande sera rejetée (`400 Bad Request`).
 
