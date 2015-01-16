@@ -60,18 +60,32 @@ Nota bene: ces fichiers JSON ne contiendront que les articles étant disponibles
 Envoyer la liste des articles commandés
 ---------------------------------------
 
-Requête à faire: à définir. POST ?
-
 ```
+POST /orders.json HTTP/1.1
+Accept: application/json
+Content-type: application/json
+Content-length: 164
+
 {
-	"table": 10,
-	"articles": [
-		5, 8, 12
-	]
+	"order": {
+		"table": 10,
+		"articles": [
+			{
+				"id": 5,
+				"comment": "au shaker"
+			},
+			{
+				"id": 8,
+				"comment": "pas à la cuillère"
+			}
+		]
+	}
 }
 ```
 
 NB: si un même article est commandé plusieurs fois, juste mettre plusieurs fois d'affilée son id.
+
+NB: ATTENTION: pour un caractère non ASCII, il faut compter le nombre d'octets qu'il prend dans le `Content-length`, pas juste 1, par exemple `à` ou `è` prenne chacun 2 octets en UTF8. Si le `Content-length:` n'est pas valide, le parsing côté serveur va échouer, et la commande sera rejetée (`400 Bad Request`).
 
 
 Comment accéder à l'API JSON (groupe appli mobile)
@@ -81,7 +95,11 @@ Comment accéder à l'API JSON (groupe appli mobile)
     2. placez-vous dans le dossier `server-ror` et lancer le serveur: `rails s`
     3. en dev, le serveur tourne par défaut sur le port 3000 (http://localhost:3000)
 
-* il vous suffit de faire une requête GET à l'adresse du fichier pour le récupérer. Exemple avec netcat:
+
+Exemples avec netcat
+--------------------
+
+### Récupérer la liste des articles / catégories
 
 ```
 netcat localhost 3000
@@ -89,5 +107,14 @@ netcat localhost 3000
 GET /categories.json HTTP/1.1
 Host: localhost
 ```
+
+### Envoyer une commande
+
+Mettre toute la requête HTTP (POST + headers + JSON) dans un fichier `request.txt`. Exemple: voir plus haut "Envoyer la liste des articles commandés".
+
+```
+cat request.txt | netcat localhost 3000
+```
+
 
 

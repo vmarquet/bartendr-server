@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
   # TODO: pour le ':except', il faudrait n'autoriser que les .json, pas via le html
   load_and_authorize_resource
 
+  # we disable some security protections for the API
+  # cf http://stackoverflow.com/questions/16258911
+  protect_from_forgery except: :create
+
   # GET /orders
   # GET /orders.json
   def index
