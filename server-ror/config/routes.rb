@@ -14,6 +14,9 @@ devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logo
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
+  get '/qrcode',     to: 'qrcode#index'
+  get '/qrcode/pdf', to: 'qrcode#render_pdf'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
