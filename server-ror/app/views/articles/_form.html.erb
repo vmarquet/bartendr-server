@@ -40,11 +40,11 @@
     <div class="controls">
       <div class="row">
         <div class="col-xs-10 col-sm-8 col-m-6 col-xs-offset-1 col-sm-offset-1">
-          <%= select(:article, :category, Article.categoryList, {}) %>
+          <%= collection_select(:article, :category_id, Category.all, :id, :name) %>
         </div>
       </div> 
     </div>
-    <%= error_span(@article[:category]) %>
+    <%= error_span(@article[:category_id]) %>
   </div>
 
   <div class="control-group">
@@ -95,7 +95,7 @@
     <%= error_span(@article[:availability]) %>
   </div>
 
-  <br>
+  <br />
 
   <div class="control-group">
     <div class="row">

@@ -9,7 +9,6 @@ class Item < ActiveRecord::Base
 	# cf http://stackoverflow.com/questions/2859384
 
 	belongs_to :article
-	validates_presence_of :article
 	validates_presence_of :article_id
 
 	# we use ActiveRecord callbacks to copy the price of the article

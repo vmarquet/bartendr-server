@@ -154,6 +154,8 @@ fr:
       update: "Modifier ce(tte) %{model}"
     links:
       new: "Nouveau"
+      new_article: "Nouvel article"
+      new_category: "Nouvelle catégorie"
       edit: "Modifier"
       destroy: "Supprimer"
       cancel: "Annuler"

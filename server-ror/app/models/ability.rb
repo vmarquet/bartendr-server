@@ -9,18 +9,19 @@ class Ability
         can :manage, :all
 
     elsif user.has_role? :bartender
-        can :manage, Article
+        can :manage, [Article, Category]
         can :read, [Order, Item]
     
     elsif user.has_role? :barman
         can [:read, :update], Article
         # TODO: il faudrait l'accès en écriture uniquement sur le tag "en stock" des articles
+        can :read, Category
         can :read, [Order, Item]
         can :destroy, [Order, Item]  # au cas où un client veut annuler sa commande
         # TODO: autoriser uniquement dans l'heure suivant la commande
     
     else  # client qui utilise l'application
-        can :read, Article
+        can :read, [Article, Category]
         can :create, [Order, Item]
     end
 

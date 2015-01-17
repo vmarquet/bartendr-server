@@ -21,7 +21,7 @@
       <tr>
         <td><%= link_to article.id, article_path(article) %></td>
         <td><%= article.name %></td>
-        <td><%= article.category %></td>
+        <td><%= article.category.name %></td>
         <td><%= article.description %></td>
         <td><%= number_to_currency(article.price, :locale => :fr) %></td>
         <td>
@@ -52,8 +52,14 @@
 </table>
 
 <% if can? :create, Article %>
-  <%= link_to t('.new', :default => t("helpers.links.new")),
+  <%= link_to t('.new', :default => t("helpers.links.new_article")),
             new_article_path,
+            :class => 'btn btn-primary' %>
+<% end %>
+
+<% if can? :create, Category %>
+  <%= link_to t('.new', :default => t("helpers.links.new_category")),
+            new_category_path,
             :class => 'btn btn-primary' %>
 <% end %>
 
