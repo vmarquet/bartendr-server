@@ -5,13 +5,43 @@ class QrcodeController < ApplicationController
 	end
 
 	def render_pdf
+		# we convert the form parameters to an array of numbers (table numbers)
+		if params[:numbers] != nil
+			if params[:numbers] == ""
+				redirect_to :back, alert: "Veuillez remplir le champ \"Numéros\"."; return
+			end
+			# we convert the string to an array of integers
+			begin
+				tables = params[:numbers].to_s.split(",")
+				for table in tables
+					table = Integer(table, 10)  # 10 because base 10
+				end
+			rescue
+				redirect_to :back, alert: "Paramètres invalides."; return
+			end
+		elsif params[:number_from] != nil && params[:number_to] != nil
+			if params[:number_from] == "" or params[:number_to] == ""
+				redirect_to :back, alert: "Veuillez remplir les deux champs."; return
+			end
+			# we convert the strings to integers
+			begin
+				table_from = Integer(params[:number_from].to_s)
+				table_to   = Integer(params[:number_to].to_s)
+			rescue
+				redirect_to :back, alert: "Paramètres invalides."; return
+			end
+			# we create an array
+			if table_from > table_to
+				redirect_to :back, alert: "Erreur: le n° de la table de départ est plus grand
+				                           que celui d'arrivée."; return
+			end
+			tables = table_from..table_to   # nb:  1..5 => [1,2,3,4,5]
+		else
+			redirect_to :back, alert: "Veuillez remplir les champs."; return
+		end
+
 		# we create a new PDF document (with gem Prawn)
 		pdf = Prawn::Document.new(:page_size => "A4")
-
-		tables = []
-		for i in 1..15
-			tables << i
-		end
 
 		column = 0
 		row = 0

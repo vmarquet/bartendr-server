@@ -2,6 +2,32 @@
   <h1><%=t '.title', :default => "QR code" %></h1>
 </div>
 
-<%= link_to "Générer les QR codes", {:controller => :qrcode, :action => :render_pdf },
-    { :class => "btn btn-primary" } %>
+
+<h3>Première option</h3>
+
+<%= form_tag "/qrcode/pdf", method: "get" do %>
+  <p>Préciser le numéro de départ et le numéro d'arrivée.</p>
+
+  <%= label_tag :number_from, "A partir de la table n° " %>
+  <%= number_field_tag :number_from, nil, { min: 1 }  %>
+
+  <%= label_tag :number_to, "jusqu'à la table n° " %>
+  <%= number_field_tag :number_to %>
+
+  <br /><br />
+  <%= submit_tag "Générer les QR codes", { :class => "btn btn-primary" } %>
+<% end %>
+<br />
+
+<h3>Deuxième option</h3>
+
+<%= form_tag "/qrcode/pdf", method: "get" do %>
+  <p>Préciser une suite de numéros, séparés par des virgules.</p>
+
+  <%= label_tag :numbers, "Numéros: " %>
+  <%= text_field_tag :numbers %>
+
+  <br /><br />
+  <%= submit_tag "Générer les QR codes", { :class => "btn btn-primary" } %>
+<% end %>
 
