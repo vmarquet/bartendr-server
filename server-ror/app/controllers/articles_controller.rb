@@ -1,18 +1,32 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:index, :show]
-  # TODO: pour le ':except', il faudrait n'autoriser que les .json et pas les .html
+  before_action :authenticate_user!, :except => [:index, :show]  # except for the API
   load_and_authorize_resource
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    # we allow only API access (JSON) when user is not identified, not HTML
+    respond_to do |format|
+      format.html do
+        if user_signed_in?
+          @articles = Article.all
+        else
+          redirect_to '/'
+        end
+      end
+      format.json { @articles = Article.all }
+    end
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    # we allow only API access (JSON) when user is not identified, not HTML
+    respond_to do |format|
+      format.html { if not user_signed_in?; redirect_to '/'; end }
+      format.json {}
+    end
   end
 
   # GET /articles/new

@@ -1,18 +1,32 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [:index, :show]
-  # TODO: pour le ':except', il faudrait n'autoriser que les .json et pas les .html
+  before_action :authenticate_user!, :except => [:index, :show]  # except for the API
   load_and_authorize_resource
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    # we allow only API access (JSON) when user is not identified, not HTML
+    respond_to do |format|
+      format.html do
+        if user_signed_in?
+          @categories = Category.all
+        else
+          redirect_to '/'
+        end
+      end
+      format.json { @categories = Category.all }
+    end
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    # we allow only API access (JSON) when user is not identified, not HTML
+    respond_to do |format|
+      format.html { if not user_signed_in?; redirect_to '/'; end }
+      format.json {}
+    end
   end
 
   # GET /categories/new
