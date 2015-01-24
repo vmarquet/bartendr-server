@@ -1,0 +1,23 @@
+# bartendr-specific texts
+
+fr:
+  devise:
+    account:
+      cancel: "Résilier le compte"
+      edit: "Modifier l'utilisateur"
+    form:
+      email: "Email"
+      password: "Mot de passe"
+      password_change: "laissez vide si vous ne voulez pas le changer"
+      password_confirmation: "Confirmation du mot de passe"
+      password_current: "Mot de passe actuel"
+      password_current_tip: "nous avons besoin de votre mot de passe actuel pour confirmer les changements"
+      password_min_char: "%{number} caractères minimum"
+      remember_me: "Se souvenir de moi"
+    links:
+      password_forgotten: "Vous avez oublié votre mot de passe ?"
+  helpers:
+    links:
+      back: "Retour"
+      new_article: "Nouvel article"
+      new_category: "Nouvelle catégorie"

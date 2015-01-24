@@ -1,0 +1,23 @@
+# bartendr-specific texts
+
+en:
+  devise:
+    account:
+      cancel: "Cancel my acccount"
+      edit: "Edit user"
+    form:
+      email: "Email"
+      password: "Password"
+      password_change: "leave blank if you don't want to change it"
+      password_confirmation: "Password confirmation"
+      password_current: "Current password"
+      password_current_tip: "we need your current password to confirm your changes"
+      password_min_char: "%{number} characters minimum"
+      remember_me: "Remember me"
+    links:
+      password_forgotten: "Forgot your password?"
+  helpers:
+    links:
+      back: "Back"
+      new_article: "New article"
+      new_category: "New category"

@@ -152,14 +152,6 @@ fr:
       create: "Créer un(e) %{model}"
       submit: "Enregistrer ce(tte) %{model}"
       update: "Modifier ce(tte) %{model}"
-    links:
-      new: "Nouveau"
-      new_article: "Nouvel article"
-      new_category: "Nouvelle catégorie"
-      edit: "Modifier"
-      destroy: "Supprimer"
-      cancel: "Annuler"
-      back: "Retour"
   number:
     currency:
       format:

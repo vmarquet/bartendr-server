@@ -14,8 +14,8 @@ en:
       cancel: "Cancel"
       confirm: "Are you sure?"
       destroy: "Delete"
-      new: "New"
       edit: "Edit"
+      new: "New"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
