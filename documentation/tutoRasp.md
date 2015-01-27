@@ -55,3 +55,17 @@
 ###	INSTALLATION DE RAILS
 	
 	gem install rails -v 4.1.6
+
+###	INSTALLATION DU SERVEUR
+
+	git clone https://github.com/vmarquet/bartendr-server.git
+	cd ~/bartendr-server/serveur-ror	
+	bundle install 				# Prévoir 3 bonnes heures
+
+###	LANCEMENT DU SERVEUR
+
+	cd ~/bartendr-server/serveur-ror
+	rake db:migrate
+	rails s
+
+* Votre serveur tourne maintenant sur la rasp ! Bravo !
