@@ -5,7 +5,7 @@
 * Télécharger un os pour la rasp pour l'instant NOOBS : 
 * <http://www.raspberrypi.org/downloads/>
 * Formater la carte SD en format FAT32
-* Déziper le contenu du dossier téléchargé dans la carte SD
+* Dézipper le contenu du dossier téléchargé dans la carte SD
 * Ejecter la carte SD proprement
 	
 ###     Installation de l'OS sur la Rasp
@@ -25,14 +25,14 @@
 ###     Mise a jour du systeme
 
 * Il faut tout d'abord quitter le menu de config pour cela appuyez sur tab et selectionnez finish
-* Pour mettre a jour vous pouvez utiliser apt-get ou aptitude 
-* (les options et commandes sont exactement les memes)
+* Pour mettre à jour vous pouvez utiliser apt-get ou aptitude 
+* (les options et commandes sont exactement les mêmes)
 * exemple avec aptitude : 
 	sudo aptitude update -y && sudo aptitude upgrade -y && sudo reboot
 * (Il suffit donc de substituer aptitude par apt-get si vous le souhaitez)
 * La Rasp va alors redémarrer.
 	
-##     Installation de RoR (GitHub de vincent Marquet)
+##     Installation de RoR (GitHub de Vincent Marquet)
 
 ###	INSTALLATION DE RVM
 	
@@ -59,12 +59,12 @@
 ###	INSTALLATION DU SERVEUR
 
 	git clone https://github.com/vmarquet/bartendr-server.git
-	cd ~/bartendr-server/serveur-ror	
+	cd ~/bartendr-server/server-ror	
 	bundle install 				# Prévoir 3 bonnes heures
 
 ###	LANCEMENT DU SERVEUR
 
-	cd ~/bartendr-server/serveur-ror
+	cd ~/bartendr-server/server-ror
 	rake db:migrate
 	rails s
 
