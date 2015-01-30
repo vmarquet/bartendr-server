@@ -1,0 +1,15 @@
+[
+<% @category.article.each_with_index do |article, index| %>
+	{
+		"id": <%= article.id %>,
+		"name": "<%= article.name %>",
+		"description": "<%= article.description %>",
+		"price": "<%= article.price %>",
+		"size": "TODO",
+		"picture": "TODO"
+	}
+	<% if not index == @category.article.count - 1%>
+	,
+	<% end %>
+<% end %>
+]
