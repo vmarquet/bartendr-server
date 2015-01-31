@@ -11,9 +11,22 @@ Installation de Rails
 ```
 sudo apt-get install curl
 curl -L get.rvm.io | bash -s stable   # download and install rvm
-source ~/.rvm/scripts/rvm             # add rvm to $PATH
+source ~/.rvm/scripts/rvm
+exit
+```
+
+Maintenant ouvrir un **nouveau terminal**, ne pas en utiliser un qui est déjà ouvert, parce qu'il ne va pas relire le fichier `~/.bashrc` qui a été modifié.
+
+```
 rvm requirements                      # install some packages (sqlite3, ...)
 ```
+
+Nota bene: si à ce moment-là, il y a une erreur du genre `rvm not found`, ajouter la ligne suivante à la fin du fichier `~/.bashrc`:
+```
+export PATH="$PATH:$HOME/.rvm/bin"
+```
+Et réouvrir un nouveau terminal puis relancer `rvm requirements`.
+
 
 #### Etape 2: installation de Ruby
 ```
@@ -31,17 +44,18 @@ rvm rubygems current                  # je ne sais pas si c'est nécéssaire
 gem install rails -v 4.1.6
 ```
 
+Optionnel: pour accélérer un peu l'installation, il est possible de ne pas installer les docs avec l'option `--no-document`.
+
+
 #### Etape 4: dépendances
-```
-# JavaScript runtime: NodeJS
-sudo apt-get install nodejs  # ATTENTION, les versions dans les repos sont vieilles
-# pour une version plus récente: télécharger ici: http://nodejs.org/
-# extraire l'archive .tgz, et:
-./configure && make && sudo make install
 
-# Optionnel: CoffeeScript
-sudo npm install -g coffee-script  # nécéssite une version récente de NodeJS
+##### NodeJS (Javascript runtime)
+```
+sudo apt-get install nodejs
 ```
 
-#### Etape 5: problèmes rencontrés
+#### Problèmes éventuels
+
+##### Gem JSON
+
 En testant la création d'un nouveau projet avec `rails new`, il manquait la gem json. A installer avec `gem install json -v '1.8.1'`, puis repartir de zéro avec un nouveau `rails new`.
