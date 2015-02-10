@@ -39,23 +39,26 @@ function getOrdersJSON() {
 // the function to update the HTML code with the data from the AJAX request
 function updateOrdersHTML(data) {
 
-  var orders_html = ' \
-    <table class="table table-striped" id="orders-index-table"> \
-      <tbody>'
+  var orders_html = '<div id="orders-index-table">'
 
   var i = 0;
   while (i < data.length) {
+    // for each order, we create a panel, 
+    // and we create a table inside it, containing the articles
     order = data[i];
 
-    orders_html += ' \
-      <div class="items"> \
-        <!-- une ligne pour l\'en-tête de la commande --> \
-        <tr class="order"> \
-          <td>Commande n° ' + order.order_id + '</td> \
-          <td>Passée à ' + order.created_at + '</td> \
-          <td>Table n° TODO</td> \
-          <td>';
+    // we create a new panel
+    orders_html += '<div class="panel panel-default">'
 
+    // we create the heading of the panel, and we fill it with order metadata
+    orders_html += '<div class="panel-heading"><div class="row">'
+
+    orders_html += '<div class="col-md-2">Commande n° ' + order.order_id + '</div>'
+    orders_html += '<div class="col-md-2"> Passée à ' + order.created_at + '</div>'
+    orders_html += '<div class="col-md-2"> Table n° TODO </div>'
+
+    orders_html += '<div class="col-md-2">'
+    // stuff to compute how to display the buttons "paid" and "served"
     var icon; var button_type;
     if (order.is_paid.toString().localeCompare("true") == 0) {
       icon = '<font color="white"> ✔ payé </font>';
@@ -69,7 +72,7 @@ function updateOrdersHTML(data) {
     orders_html += '<a class="btn btn-xs ' + button_type + '" \
                        data-remote="true" data-method="patch" \
                        href="/orders/' + order.order_id + '/ispaid" rel="nofollow"> \
-                       ' + icon + '</a></td><td>';
+                       ' + icon + '</a>';
 
     if (order.is_served.toString().localeCompare("true") == 0) {
       icon = '<font color="white"> ✔ servi </font>';
@@ -85,28 +88,31 @@ function updateOrdersHTML(data) {
                        href="/orders/' + order.order_id + '/isserved" rel="nofollow"> \
                        ' + icon + '</a>';
 
+    orders_html += '</div>'
+
+    // the button "suppress"
+    orders_html += ' \
+          <div class="col-md-2"> \
+            <a class="btn btn-xs btn-danger" \
+               data-confirm="Êtes-vous sûr de vouloir supprimer cette commande ?" \
+               data-method="delete" href="/orders/' + order.order_id + '" rel="nofollow">Supprimer \
+            </a> \
+          </div>'
+
+    // we compute the total price of the order (sum of all items)
     var j = 0; var price = 0;
     while (j < order.items.length) {
       price += order.items[j].price;
       j++;
     }
+    orders_html += '<div class="col-md-2"> Prix total: ' + price + ' €</div>'
 
-    orders_html += '</td> \
-          <td> \
-            <a class="btn btn-xs btn-danger" \
-               data-confirm="Êtes-vous sûr de vouloir supprimer cette commande ?" \
-               data-method="delete" href="/orders/' + order.order_id + '" rel="nofollow">Supprimer \
-            </a></td> \
-          <td width="160px">Prix total: ' + price + ' €</td> \
-        </tr>'
+    // end of the panel heading
+    orders_html += '</div></div>'
 
-    orders_html += ' \
-        <!-- une ligne pour contenir un sous-tableau avec les items commandés --> \
-        <tr> \
-          <td colspan="7"> \
-            <table class="table"> \
-              <tbody>'
-    
+    // we create a table to display each item in the order
+    orders_html += '<table class="table"><tbody>'
+
     j = 0;
     while (j < order.items.length) {
       item = order.items[j];
@@ -120,20 +126,18 @@ function updateOrdersHTML(data) {
       j++;
     }
 
-    orders_html += ' \
-              </tbody> \
-            </table> \
-          </td> \
-        </tr> \
-      </div>'
+    // end of the items table
+    orders_html += '</tbody></table>'
+
+    // end of the panel
+    orders_html += '</div>'
 
     i++;
   }
 
-  orders_html += ' \
-      </tbody> \
-    </table>'
+  orders_html += '</div>'
 
+  // we rewrite entirely the part of the page where the orders are displayed
   $("#orders-index-table").html(orders_html);
 }
 
