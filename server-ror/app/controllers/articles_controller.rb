@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
       format.html do
         if user_signed_in?
           @articles = Article.all
+          @categories = Category.order('lower(name) ASC')
         else
           redirect_to '/'
         end
