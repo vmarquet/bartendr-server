@@ -55,7 +55,7 @@ function updateOrdersHTML(data) {
 
     orders_html += '<div class="col-md-2">Commande n° ' + order.order_id + '</div>'
     orders_html += '<div class="col-md-2"> Passée à ' + order.created_at + '</div>'
-    orders_html += '<div class="col-md-2"> Table n° TODO </div>'
+    orders_html += '<div class="col-md-2"> Table n° ' + order.table + '</div>'
 
     orders_html += '<div class="col-md-2">'
     // stuff to compute how to display the buttons "paid" and "served"

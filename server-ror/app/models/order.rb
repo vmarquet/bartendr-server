@@ -8,8 +8,11 @@ class Order < ActiveRecord::Base
 
 	after_initialize :set_default_values  # method set_default_values will be called after initialization
 
+	# a command without any item is pointless
 	validate :require_at_least_one_item
 
+	# we check that some fields aren't nil
+	validates_presence_of :table
 
 	private
 

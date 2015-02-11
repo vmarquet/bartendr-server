@@ -7,6 +7,7 @@
 		"created_at": "<%= order.created_at.strftime("%H:%M") %>",
 		"is_paid": <%= order.is_paid %>,
 		"is_served": <%= order.is_served %>,
+		"table": "<%= order.table %>",
 		"items": [
 		<% order.items.each_with_index do |item, index2| %>
 			{
