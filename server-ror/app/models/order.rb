@@ -11,8 +11,9 @@ class Order < ActiveRecord::Base
 	# a command without any item is pointless
 	validate :require_at_least_one_item
 
-	# we check that some fields aren't nil
+	# we check that the fields are what they are expected to be
 	validates_presence_of :table
+	validates_numericality_of :table, :integer_only => true
 
 	private
 
