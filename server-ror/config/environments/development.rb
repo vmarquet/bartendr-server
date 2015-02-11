@@ -35,4 +35,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: '0.0.0.0', port: 3000 }
+
+  # To preview mails in the browser instead of sending them
+  config.action_mailer.delivery_method = :letter_opener
 end
