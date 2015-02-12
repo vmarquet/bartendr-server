@@ -13,9 +13,15 @@ class User < ActiveRecord::Base
     if self.id == 1
       # first user created: we give him admin rights
       self.add_role :admin
+      # and we approve him
+      self.approved = true
+      self.save
     elsif self.id == 2
       # second user created: we give him bartender rights
       self.add_role :bartender
+      # and we approve him
+      self.approved = true
+      self.save
     else
       # we send an email to the manager (TODO: create AdminMailer class)
       # AdminMailer.new_user_waiting_for_approval(self).deliver
