@@ -38,4 +38,8 @@ Rails.application.configure do
 
   # To preview mails in the browser instead of sending them
   config.action_mailer.delivery_method = :letter_opener
+
+  # Use Websocket in development mode
+  config.middleware.delete Rack::Lock
+  
 end
