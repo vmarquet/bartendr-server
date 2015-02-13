@@ -57,4 +57,4 @@ gem 'letter_opener', :group => :development
 
 # Websocket
 gem 'websocket-rails'
-#command line to add the gem: rails g websocket_rails:install
+#command line to add the gem with the .rb and .js files needed: rails g websocket_rails:install
