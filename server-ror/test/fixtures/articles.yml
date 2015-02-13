@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+blonde_beer:
+  id: 1
+  name: Bière blonde
   price: 9.99
-  description: MyString
-  category: MyString
-  picture_url: MyString
+  description: "Une bière blonde."
+  category: beer
+  picture_url: todo
   availability: false
 
-two:
-  name: MyString
+pina_colada:
+  id: 2
+  name: Piña Colada
   price: 9.99
-  description: MyString
-  category: MyString
-  picture_url: MyString
-  availability: false
+  description: "Rhum, jus d'ananas et crème de coco."
+  category: cocktail
+  picture_url: todo
+  availability: true
