@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  html_id: MyString
+beer:
+  name: Bière
 
-two:
-  name: MyString
-  html_id: MyString
+cocktail:
+  name: Cocktail
+

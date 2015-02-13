@@ -1,13 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   is_paid: false
   is_preparation_started: false
   is_preparation_done: false
   is_served: false
+  table: 15
 
 two:
+  id: 2
   is_paid: false
   is_preparation_started: false
   is_preparation_done: false
   is_served: false
+  table: 40

@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
+  order_id: 1
+  article_id: 1
   price: 9.99
-  comments: MyString
+  comments: "bla bla bla"
 
 two:
+  id: 2
+  order_id: 2
+  article_id: 2
   price: 9.99
-  comments: MyString
+  comments: "au shaker, pas à la cuillère"
