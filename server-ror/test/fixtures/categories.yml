@@ -1,8 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 beer:
+  id: 1
   name: Bière
 
 cocktail:
+  id: 2
   name: Cocktail
 

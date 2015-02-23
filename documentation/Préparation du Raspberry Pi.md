@@ -94,5 +94,118 @@ Votre serveur tourne maintenant sur la rasp ! Bravo !
 Configuration de l'Access Point
 -------------------------------
 
-TODO
+```
+sudo nano /etc/udhcpd.conf
+```
+
+* copier le fichier `/etc/udhcpd.conf` dans votre répertoire local pour pouvoir revenir en arrière si besoin
+
+```
+sudo cp /etc/udhcpd.conf ~/
+```
+
+* Recréer le fichier 
+
+```
+sudo nano /etc/udhcpd.conf
+```
+
+* Remplir le fichier
+
+```
+start 192.168.42.2 # This is the range of IPs that the hostspot will give to client devices.
+end 192.168.42.20
+interface wlan0 # The device uDHCP listens on.
+remaining yes
+opt dns 8.8.8.8 4.2.2.2 # The DNS servers client devices will use.
+opt subnet 255.255.255.0
+opt router 192.168.42.1 # The Pi's IP address on wlan0 which we will set up shortly.
+opt lease 864000 # 10 day DHCP lease time in seconds
+```
+
+* Editer le fichier `/etc/default/udhcpd` et mettez la ligne en commentaire:
+
+```
+sudo nano /etc/default/udhcpd	
+DHCPD_ENABLED="no"
+
+sudo ifconfig wlan0 192.168.42.1
+```
+
+* Pour que l'ip reste après un Reboot changer dans le fichier `/etc/network/interfaces`
+
+```
+sudo nano /etc/network/interfaces	
+iface wlan0 inet static  address 192.168.42.1  netmask 255.255.255.0
+```
+
+* Et mettre ces 3 lignes en commentaire : 
+
+```
+allow-hotplug wlan0
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet manual
+```
+
+* Configurer Hostapd
+
+```
+sudo nano /etc/hostapd/hostapd.conf
+interface=wlan0
+driver=nl80211
+ssid=My_AP
+hw_mode=g
+channel=6
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+wpa_passphrase=My_Passphrase
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+```
+
+* Changer le SSID, PASSPHRASE
+
+```
+sudo nano /etc/default/hostapd
+```
+
+* Changer la ligne 
+
+```
+#DAEMON_CONF=""
+```
+
+* en
+
+```
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+```
+
+* La suite :
+
+```
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+sudo nano /etc/network/interfaces
+```
+
+* Ajouter la ligne tout en bas du fichier 
+
+```
+up iptables-restore < /etc/iptables.ipv4.nat
+```
+
+* Lancer l'access point !
+
+```
+sudo service hostapd start
+sudo service udhcpd start
+```
+
+
 
