@@ -23,7 +23,7 @@ class CategoriesControllerTest < ActionController::TestCase
   test "should create category" do
     sign_in User.find(1)
     assert_difference('Category.count') do
-      post :create, category: { name: @category.name }
+      post :create, category: { name: "Vin" }
     end
 
     assert_redirected_to category_path(assigns(:category))

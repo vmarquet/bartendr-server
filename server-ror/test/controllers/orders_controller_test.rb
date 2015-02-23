@@ -23,7 +23,7 @@ class OrdersControllerTest < ActionController::TestCase
   test "should create order" do
     sign_in User.find(1)
     assert_difference('Order.count') do
-      post :create, order: { is_paid: @order.is_paid, is_preparation_done: @order.is_preparation_done, is_preparation_started: @order.is_preparation_started, is_served: @order.is_served }
+      post :create, order: { table: 15, items_attributes: [{ article_id: 1, comments: "au shaker" }] }
     end
 
     assert_redirected_to order_path(assigns(:order))
