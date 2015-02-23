@@ -1,0 +1,14 @@
+# we add admin role to the first user
+one:
+  role_id: 1
+  user_id: 1
+
+# we add bartender role for the second user
+two:
+  role_id: 2
+  user_id: 2
+
+# we add barman role for the third user
+three:
+  role_id: 3
+  user_id: 3
