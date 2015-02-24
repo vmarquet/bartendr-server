@@ -3,15 +3,19 @@
 admin:
   id: 1
   email: "admin@bartendr.fr"
+  approved: true
 
 bartender:
   id: 2
   email: "bartender@bartendr.fr"
+  approved: true
 
 barman:
   id: 3
   email: "barman@bartendr.fr"
+  approved: true
 
 intruder:
   id: 4
   email: "intruder@test.com"
+  approved: false
