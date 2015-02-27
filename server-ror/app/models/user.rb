@@ -23,9 +23,8 @@ class User < ActiveRecord::Base
       self.approved = true
       self.save
     else
-      # we send an email to the manager (TODO: create AdminMailer class)
-      # AdminMailer.new_user_waiting_for_approval(self).deliver
-      # cf https://github.com/plataformatec/devise/wiki/How-To:-Use-custom-mailer
+      # we send the mail to the bartender(s) to ask them to approve the account
+      AdminMailer.send_confirm_user_email self
     end
   }
 
