@@ -107,7 +107,7 @@ sudo cp /etc/udhcpd.conf ~/
 * Recréer le fichier 
 
 ```
-sudo nano /etc/udhcpd.conf
+	sudo nano /etc/udhcpd.conf
 ```
 
 * Remplir le fichier
@@ -126,16 +126,19 @@ opt lease 864000 # 10 day DHCP lease time in seconds
 * Editer le fichier `/etc/default/udhcpd` et mettez la ligne en commentaire:
 
 ```
-sudo nano /etc/default/udhcpd	
+	$sudo nano /etc/default/udhcpd	
 DHCPD_ENABLED="no"
+```
+* Changer l'adresse IP de la rasp dans le reseau local
 
+```
 sudo ifconfig wlan0 192.168.42.1
 ```
 
-* Pour que l'ip reste après un Reboot changer dans le fichier `/etc/network/interfaces`
+* Pour que l'ip reste après un Reboot, changer dans le fichier `/etc/network/interfaces`
 
 ```
-sudo nano /etc/network/interfaces	
+	$sudo nano /etc/network/interfaces	
 iface wlan0 inet static  address 192.168.42.1  netmask 255.255.255.0
 ```
 
@@ -150,7 +153,7 @@ iface default inet manual
 * Configurer Hostapd
 
 ```
-sudo nano /etc/hostapd/hostapd.conf
+	$sudo nano /etc/hostapd/hostapd.conf
 interface=wlan0
 driver=nl80211
 ssid=My_AP
@@ -166,7 +169,9 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 ```
 
-* Changer le SSID, PASSPHRASE
+* Ne pas oublier de changer le SSID, PASSPHRASE dans le fichier précédent.
+
+* Ajouter hostapd au lancement de la rasp
 
 ```
 sudo nano /etc/default/hostapd
@@ -191,12 +196,12 @@ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
-sudo nano /etc/network/interfaces
 ```
 
 * Ajouter la ligne tout en bas du fichier 
 
 ```
+	$sudo nano /etc/network/interfaces
 up iptables-restore < /etc/iptables.ipv4.nat
 ```
 
