@@ -1,6 +1,9 @@
 # bartendr-specific texts
 
 en:
+  bartendr:
+    delete_category: "Are you sure? Deleting a category will also delete all articles in that category."
+    info_articles_index_if_no_category: "In order to fill the article list, you must first create a category (the button to the right). Each article must belong to a category."
   devise:
     account:
       cancel: "Cancel my acccount"
