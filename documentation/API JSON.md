@@ -87,6 +87,27 @@ NB: si un même article est commandé plusieurs fois, créer plusieurs items dif
 
 NB: ATTENTION: pour un caractère non ASCII, il faut compter le nombre d'octets qu'il prend dans le `Content-length`, pas juste 1, par exemple `à` ou `è` prenne chacun 2 octets en UTF8. Si le `Content-length:` n'est pas valide, le parsing côté serveur va échouer, et la commande sera rejetée (`400 Bad Request`).
 
+### Codes de retour les plus fréquents
+
+* `201` (created): commande créé avec succès
+    * l'identifiant de la commande est retourné dans le champ `id` de la réponse en JSON: `{"id":7, ...}`
+* `400` (bad request): par exemple si la valeur du champ `Content-length:` ne correspond pas à la taille des données envoyées
+* `404` (not found): par exemple si l'un des articles commandé n'existe pas dans la BDD
+* `422` (unprocessable entity): si le champ `Content-Type:` contient `application/json; charset=utf-8`, le serveur vous a renvoyé un message en JSON dans lequel vous pouvez lire la liste des erreurs, sous la forme d'un objet dont chaque attribut est une liste de message d'erreurs:
+
+```
+{
+	"erreur1": ["message de l'erreur 1"],
+	"erreur2": ["premier problème", "second problème"]
+}
+```
+
+Exemples:
+
+* `{"base":["You must provide at least one item"]}`: s'il n'y a aucun item dans la commande
+* `{"items.article_id":["doit être rempli(e)"]}`: s'il manque le champ `article_id` d'un item de la commande
+* `{"table":["n'est pas un nombre"]}`: si on met une string à la place du numéro de table
+
 
 Comment accéder à l'API JSON (groupe appli mobile)
 --------------------------------------------------
