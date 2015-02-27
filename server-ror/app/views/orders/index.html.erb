@@ -16,28 +16,3 @@
 <div class="row">
     <div id="orders-index-table"></div>
 </div>
-
-<!--
-En test
-<ul id="orders_area">
-
-</ul>
-
-<input id="comment" type="text">
-<input id="send" type="button" value="send">
-
-<script>
-
-var ws_rails = new WebsocketRails("localhost:3000/websocket");
-ws_rails.bind("websocket_orders", function(drinkMessage){
-	var drinkMessage_read = document.createElement("read");
-	drinkMessage_read.textContent = drinkMessage;
-	document.getElementById("orders_area").appendChild(drinkMessage_read);
-})
-document.getElementById("send").onclick = function(){
-	var comment = document.getElementById("comment").value;
-	ws_rails.trigger("websocket_orders", comment);
-}
-
-</script>
--->
