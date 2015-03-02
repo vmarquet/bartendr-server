@@ -26,7 +26,7 @@ class CategoriesControllerTest < ActionController::TestCase
       post :create, category: { name: "Vin" }
     end
 
-    assert_redirected_to category_path(assigns(:category))
+    assert_redirected_to articles_path
   end
 
   test "should show category" do
@@ -44,7 +44,7 @@ class CategoriesControllerTest < ActionController::TestCase
   test "should update category" do
     sign_in User.find(1)
     patch :update, id: @category, category: { name: @category.name }
-    assert_redirected_to category_path(assigns(:category))
+    assert_redirected_to articles_path
   end
 
   test "should destroy category" do

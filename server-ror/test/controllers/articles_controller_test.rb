@@ -27,7 +27,7 @@ class ArticlesControllerTest < ActionController::TestCase
       post :create, article: { availability: true, category_id: 1, description: "Une bière brune.", name: "Bière brune", picture_url: "...", price: 10.00 }
     end
 
-    assert_redirected_to article_path(assigns(:article))
+    assert_redirected_to articles_path
   end
 
   test "should show article" do
@@ -45,7 +45,7 @@ class ArticlesControllerTest < ActionController::TestCase
   test "should update article" do
     sign_in User.find(1)
     patch :update, id: @article, article: { availability: @article.availability, category: @article.category, description: @article.description, name: @article.name, picture_url: @article.picture_url, price: @article.price }
-    assert_redirected_to article_path(assigns(:article))
+    assert_redirected_to articles_path
   end
 
   test "should destroy article" do
