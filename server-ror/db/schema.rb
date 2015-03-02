@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211214815) do
+ActiveRecord::Schema.define(version: 20150301170954) do
 
   create_table "articles", force: true do |t|
     t.string   "name",         limit: 40,                                        null: false
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20150211214815) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "approved",               default: false, null: false
+    t.string   "first_name",                             null: false
+    t.string   "last_name",                              null: false
   end
 
   add_index "users", ["approved"], name: "index_users_on_approved"

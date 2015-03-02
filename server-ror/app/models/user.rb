@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # we check that some fields aren't nil
+  validates_presence_of :first_name, :last_name
+  validates_length_of :first_name, maximum: 255
+  validates_length_of :last_name,  maximum: 255
+
   # callback, after the insertion of the user in the database,
   # we create the role depending on the user's id in the database
   # cf BarTendr's documentation
