@@ -2,8 +2,8 @@
 <% @category.article.each_with_index do |article, index| %>
 	{
 		"id": <%= article.id %>,
-		"name": "<%= article.name %>",
-		"description": "<%= article.description %>",
+		"name": <%= article.name.to_json.html_safe %>,
+		"description": <%= article.description.to_json.html_safe %>,
 		"price": "<%= article.price %>",
 		"size": "TODO",
 		"picture": "TODO"
