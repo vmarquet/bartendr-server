@@ -23,7 +23,7 @@
 					<li><a href='/'>Accueil</a></li>
 					<li><%= link_to "Commandes", orders_path %></li>
 					<li><%= link_to "Articles", articles_path %></li>
-					<li><%= link_to "Modifier le profil", edit_user_registration_path, :class => 'navbar-link' %></li>
+					<li><%= link_to "Staff", users_path, :class => 'navbar-link' %></li>
 					<li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
 				<% else %>
 					<li><%= link_to t("devise.common.sign_in"), new_user_session_path, :class => 'navbar-link'  %></li>

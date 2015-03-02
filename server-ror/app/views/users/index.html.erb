@@ -3,12 +3,43 @@
 </div>
 
 <div class="row">
-	<% for user in @users %>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				TODO: prénom de la personne [+ nom ?]
-			</div>
-			<%= user.email %>
-		</div>
-	<% end %>
+	<div class="panel panel-default">
+		<table class="table panel-body">
+			<thead>
+				<tr>
+					<th><%= t "devise.form.first_name" %></th>
+					<th><%= t "devise.form.last_name" %></th>
+					<th><%= t "devise.form.email" %></th>
+					<th> Permissions </th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<% for user in @users %>
+					<tr>
+						<td><%= user.first_name %></td>
+						<td><%= user.last_name %></td>
+						<td><%= mail_to user.email %></td>
+						<td>
+							<% if user.has_role? :admin %>
+								<span class="label label-success">admin</span>
+							<% end %>
+							<% if user.has_role? :bartender %>
+								<span class="label label-success">bartender</span>
+							<% end %>
+							<% if user.has_role? :barman %>
+								<span class="label label-success">barman</span>
+							<% end %>
+						</td>
+						<td>
+							<% if user == current_user %>
+								<%= link_to "Modifier le profil",
+                					edit_user_registration_path, :class => 'btn btn-primary btn-xs' %>
+                			<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
 </div>
