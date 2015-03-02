@@ -1,23 +1,31 @@
-<h2><%= t("devise.account.edit") %></h2>
+<div class="page-header">
+  <h1><%=t '.title', :default => t("devise.account.edit") %></h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div><%= f.label t("devise.form.first_name") %><br />
+  <%= f.text_field :first_name %></div><br />
+
+  <div><%= f.label t("devise.form.last_name") %><br />
+  <%= f.text_field :last_name %></div><br />
+
   <div><%= f.label t("devise.form.email") %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <%= f.email_field :email, autofocus: true %></div><br />
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div><br />
   <% end %>
 
   <div><%= f.label t("devise.form.password") %> <i>(<%= t("devise.form.password_change") %>)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <%= f.password_field :password, autocomplete: "off" %></div><br />
 
   <div><%= f.label t("devise.form.password_confirmation") %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></div><br />
 
   <div><%= f.label t("devise.form.password_current") %> <i>(<%= t("devise.form.password_current_tip") %>)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+    <%= f.password_field :current_password, autocomplete: "off" %></div><br />
 
   <div><%= f.submit t("helpers.links.edit") %></div>
 <% end %>

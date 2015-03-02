@@ -12,7 +12,15 @@ Rails.application.routes.draw do
   patch '/orders/:id/ispaid', to: 'orders#ispaid'
   patch '/orders/:id/isserved', to: 'orders#isserved'
 
-  devise_for :users, path: "auth", path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  get '/users', to: 'users#index'
+  devise_for :users, path: 'auth', :controllers => { registrations: 'registrations' },
+                     path_names: {
+                        sign_in: 'login', sign_out: 'logout',
+                        password: 'secret', confirmation: 'verification',
+                        unlock: 'unblock', registration: 'register',
+                        sign_up: 'cmon_let_me_in'
+                     }
+  get '/activate_accounts', to: 'users#activate_accounts'
 
   get '/qrcode',     to: 'qrcode#index'
   get '/qrcode/pdf', to: 'qrcode#render_pdf'

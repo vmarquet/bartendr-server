@@ -2,16 +2,28 @@
 
 admin:
   id: 1
+  first_name: "Vincent"
+  last_name: "Marquet"
   email: "admin@bartendr.fr"
+  approved: true
 
 bartender:
   id: 2
+  first_name: "Nicolas"
+  last_name: "Moreau"
   email: "bartender@bartendr.fr"
+  approved: true
 
 barman:
   id: 3
+  first_name: "Alexandre"
+  last_name: "Mlanao-Amadi"
   email: "barman@bartendr.fr"
+  approved: true
 
 intruder:
   id: 4
+  first_name: "Solid"
+  last_name: "Snake"
   email: "intruder@test.com"
+  approved: false

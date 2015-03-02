@@ -10,6 +10,8 @@ en:
       edit: "Edit user"
     form:
       email: "Email"
+      first_name: "First name"
+      last_name: "Last name"
       password: "Password"
       password_change: "leave blank if you don't want to change it"
       password_confirmation: "Password confirmation"

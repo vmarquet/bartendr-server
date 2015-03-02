@@ -10,6 +10,8 @@ fr:
       edit: "Modifier l'utilisateur"
     form:
       email: "Email"
+      first_name: "Prénom"
+      last_name: "Nom"
       password: "Mot de passe"
       password_change: "laissez vide si vous ne voulez pas le changer"
       password_confirmation: "Confirmation du mot de passe"
