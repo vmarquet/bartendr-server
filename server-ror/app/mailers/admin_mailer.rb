@@ -4,6 +4,7 @@ class AdminMailer < ActionMailer::Base
 
   def send_confirm_user_email user
     @user = user  # the user that registered
+
     # we select only the "bartender" users
     active_record_users = User.all
     @bartenders = []
@@ -12,6 +13,7 @@ class AdminMailer < ActionMailer::Base
         @bartenders << user
       end
     end
+
     # we send the email to all the "bartender" users
     for bartender in @bartenders
       mail(mailto: bartender.email, subject: 'An new barman registered, approve him ?').deliver!

@@ -2,6 +2,9 @@
 
 en:
   bartendr:
+    account_activation:
+      all_approved: "All users have been approved."
+      some_not_approved: "Some users have registered to the application but have not been approved yet."
     delete_category: "Are you sure? Deleting a category will also delete all articles in that category."
     info_articles_index_if_no_category: "In order to fill the article list, you must first create a category (the button to the right). Each article must belong to a category."
   devise:

@@ -2,6 +2,9 @@
 
 fr:
   bartendr:
+    account_activation:
+      all_approved: "Tous les utiisateurs ont été approuvés."
+      some_not_approved: "Certaines personnes se sont enregistrées dans l'application mais n'ont pas encore été approuvées."
     delete_category: "Êtes-vous sûr? Supprimer une catégorie supprimera aussi tous les articles de la catégorie."
     info_articles_index_if_no_category: "Afin de remplir la liste des articles, vous devez d'abord créer une catégorie (bouton à droite). Chaque article doit appartenir à une catégorie."
   devise:

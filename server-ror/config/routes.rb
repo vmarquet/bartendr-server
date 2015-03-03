@@ -20,7 +20,8 @@ Rails.application.routes.draw do
                         unlock: 'unblock', registration: 'register',
                         sign_up: 'cmon_let_me_in'
                      }
-  get '/activate_accounts', to: 'users#activate_accounts'
+  patch  '/users/:id', to: 'users#approve'
+  delete '/users/:id', to: 'users#destroy'
 
   get '/qrcode',     to: 'qrcode#index'
   get '/qrcode/pdf', to: 'qrcode#render_pdf'

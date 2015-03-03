@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
       self.approved = true
       self.save
     else
+      # default role is barman (but it is not effective until the user is approved)
+      self.add_role :barman
       # we send the mail to the bartender(s) to ask them to approve the account
       AdminMailer.send_confirm_user_email self
     end
