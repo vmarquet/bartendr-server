@@ -6,14 +6,15 @@ class Order < ActiveRecord::Base
 	has_many :items, dependent: :destroy, :inverse_of => :order
 	accepts_nested_attributes_for :items
 
-	after_initialize :set_default_values  # method set_default_values will be called after initialization
-
 	# a command without any item is pointless
 	validate :require_at_least_one_item
 
 	# we check that the fields are what they are expected to be
 	validates_presence_of :table
 	validates_numericality_of :table, :integer_only => true
+
+	# right after the creation, we set default values for tags
+	after_create :set_default_values
 
 	private
 
