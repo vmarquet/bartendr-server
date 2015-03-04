@@ -13,17 +13,18 @@ class Order < ActiveRecord::Base
 	validates_presence_of :table
 	validates_numericality_of :table, :integer_only => true
 
-	# right after the creation, we set default values for tags
-	after_create :set_default_values
+	# before the creation, we set default values for tags
+	before_create :set_default_values
 
 	private
 
-	# we set default values if fields are empty
+	# we set default values (don't accept the ones from the application user)
 	def set_default_values
-		self.is_paid ||= false
-		self.is_served ||= false
-		self.is_preparation_started ||= false
-		self.is_preparation_done ||= false
+		self.is_paid = false
+		self.is_served = false
+		self.is_preparation_started = false
+		self.is_preparation_done = false
+		return true
 	end
 
 	def require_at_least_one_item
