@@ -105,7 +105,7 @@ function updateOrdersHTML(data) {
       price += order.items[j].price;
       j++;
     }
-    orders_html += '<div class="col-md-2"> Prix total: ' + price + ' €</div>'
+    orders_html += '<div class="col-md-2"> Prix total: ' + price.toFixed(2) + ' €</div>'
 
     // end of the panel heading
     orders_html += '</div></div>'
