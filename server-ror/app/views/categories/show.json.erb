@@ -1,5 +1,5 @@
 [
-<% @category.article.each_with_index do |article, index| %>
+<% @articles.each do |article, index| %>
 	{
 		"id": <%= article.id %>,
 		"name": <%= article.name.to_json.html_safe %>,

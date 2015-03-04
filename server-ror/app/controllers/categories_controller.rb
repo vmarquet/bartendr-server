@@ -10,12 +10,12 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html do
         if user_signed_in?
-          @categories = Category.all
+          @categories = Category.order('lower(name) ASC')
         else
           redirect_to '/'
         end
       end
-      format.json { @categories = Category.all }
+      format.json { @categories = Category.order('lower(name) ASC') }
     end
   end
 
@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
     # we allow only API access (JSON) when user is not identified, not HTML
     respond_to do |format|
       format.html { if not user_signed_in?; redirect_to '/'; end }
-      format.json {}
+      format.json { @articles = @category.article.order('lower(name) ASC') }
     end
   end
 

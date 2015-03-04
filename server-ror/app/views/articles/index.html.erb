@@ -18,7 +18,7 @@
           </div>
           <table class="table">
             <tbody>
-              <% category.article.each do |article| %>
+              <% category.article.order('lower(name) ASC').each do |article| %>
                 <tr>
                   <td class="col-md-2"><%= article.name %></td>
                   <td class="col-md-5"><%= article.description %></td>
