@@ -1,6 +1,6 @@
 <%= form_for @category, :html => { :class => "form-horizontal category" } do |f| %>
 
-    <% if @category.errors.any? %>
+  <% if @category.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title"><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h3>
@@ -21,6 +21,14 @@
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
     <%= error_span(@category[:name]) %>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :picture, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :picture %>
+    </div>
+    <%= error_span(@category[:picture]) %>
   </div>
 
   <br />

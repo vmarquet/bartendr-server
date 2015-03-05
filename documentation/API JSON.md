@@ -10,11 +10,13 @@ Liste des catégories
 [
 	{
 		"id": 0,
-		"name": "Bières"
+		"name": "Bières",
+		"picture_url": "/system/categories/pictures/000/000/002/original/biere.jpg"
 	},
 	{
 		"id": 1,
-		"name": "Cocktails"
+		"name": "Cocktails",
+		"picture_url": null
 	}
 ]
 ```
@@ -24,6 +26,7 @@ Nota bene:
 * ici, l'id est le numéro de la ligne dans la table "categories".
 * étant donné qu'il est possible de supprimer une catégorie de la table des catégories, rien ne garantit que les id commencent à 0, et qu'ils se suivent tous avec un pas de 1.
 * les catégories sont triées par order alphabétique.
+* pour le champ `picture_url`, comportement idem que pour l'image des articles.
 
 
 Liste des articles d'une catégorie
