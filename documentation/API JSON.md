@@ -10,20 +10,20 @@ Liste des catégories
 [
 	{
 		"id": 0,
-		"name": "Bières",
-		"picture": "..."
+		"name": "Bières"
 	},
 	{
 		"id": 1,
-		"name": "Cocktails",
-		"picture": "..."
+		"name": "Cocktails"
 	}
 ]
 ```
 
-Nota bene: ici, l'id est le numéro de la ligne dans la table "categories".
+Nota bene:
 
-Nota bene: étant donné qu'il est possible de supprimer une catégorie de la table des catégories, rien ne garantit que les id commencent à 0, et qu'ils se suivent tous avec un pas de 1.
+* ici, l'id est le numéro de la ligne dans la table "categories".
+* étant donné qu'il est possible de supprimer une catégorie de la table des catégories, rien ne garantit que les id commencent à 0, et qu'ils se suivent tous avec un pas de 1.
+* les catégories sont triées par order alphabétique.
 
 
 Liste des articles d'une catégorie
@@ -39,7 +39,7 @@ Liste des articles d'une catégorie
 		"description": "Une bière blonde est une bière désignée ainsi de par sa couleur.",
 		"price": 10.00,
 		"size": "...",
-		"picture": "..."
+		"picture_url": "/system/articles/pictures/000/000/025/original/blonde.jpg"
 	},
 	{
 		"id": 6;
@@ -47,14 +47,19 @@ Liste des articles d'une catégorie
 		"description": "La bière brune est une bière de couleur brune, du brun acajou au noir ébène, obtenue grâce à l'utilisation de malt plus ou moins torréfié.",
 		"price": 9.00,
 		"size": "...",
-		"picture": "..."
+		"picture_url": ""
 	}
 ]
 ```
 
-Nota bene: ici, l'id est le numéro de l'article dans la table "articles". De même que pour les catégories, rien ne garantit que l'ID commence à 0, ni qu'ils se suivent.
+Nota bene:
 
-Nota bene: ces fichiers JSON ne contiendront que les articles étant disponibles, afin d'éviter de surcharger la bande passante. Le filtrage selon la disponibilité se fera donc côté serveur.
+* ici, l'id est le numéro de l'article dans la table "articles". De même que pour les catégories, rien ne garantit que l'ID commence à 0, ni qu'ils se suivent.
+* ces fichiers JSON ne contiendront que les articles étant disponibles, afin d'éviter de surcharger la bande passante. Le filtrage selon la disponibilité se fera donc côté serveur.
+* pour le champ `picture_url`, il y a deux valeurs possible:
+    * soit l'image existe, et le champ contient l'adresse de l'image, il suffit donc de faire un `GET` à cette url pour récupérer l'image
+    * soit l'image n'existe pas, auquel cas c'est une string vide: `"picture_url": ""`
+* les articles sont triés par ordre alphabétique.
 
 
 Envoyer la liste des articles commandés

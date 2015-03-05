@@ -6,7 +6,7 @@
 		"description": <%= article.description.to_json.html_safe %>,
 		"price": "<%= article.price %>",
 		"size": "TODO",
-		"picture": "TODO"
+		"picture_url": "<%= if article.picture?; article.picture.url; end %>"
 	}
 	<% if not index == @category.article.count - 1%>
 	,

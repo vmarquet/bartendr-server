@@ -32,6 +32,8 @@ class Article < ActiveRecord::Base
 
 	has_many :items
 
+	has_attached_file :picture
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
 	# we add validations before adding entries to the database
 	# see db/migrate/20141025154223_add_constraints_to_articles.rb
@@ -39,7 +41,6 @@ class Article < ActiveRecord::Base
 	# we check that string are not too long
 	validates_length_of :name, maximum: 40
 	validates_length_of :description, maximum: 255
-	validates_length_of :picture_url, maximum: 255
 
 	# we check that some fields aren't nil
 	validates_presence_of :name, :price
