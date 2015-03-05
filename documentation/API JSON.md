@@ -47,7 +47,7 @@ Liste des articles d'une catégorie
 		"description": "La bière brune est une bière de couleur brune, du brun acajou au noir ébène, obtenue grâce à l'utilisation de malt plus ou moins torréfié.",
 		"price": 9.00,
 		"size": "...",
-		"picture_url": ""
+		"picture_url": null
 	}
 ]
 ```
@@ -58,7 +58,7 @@ Nota bene:
 * ces fichiers JSON ne contiendront que les articles étant disponibles, afin d'éviter de surcharger la bande passante. Le filtrage selon la disponibilité se fera donc côté serveur.
 * pour le champ `picture_url`, il y a deux valeurs possible:
     * soit l'image existe, et le champ contient l'adresse de l'image, il suffit donc de faire un `GET` à cette url pour récupérer l'image
-    * soit l'image n'existe pas, auquel cas c'est une string vide: `"picture_url": ""`
+    * soit l'image n'existe pas, auquel cas le champ `picture_url` a pour valeur `null`
 * les articles sont triés par ordre alphabétique.
 
 
