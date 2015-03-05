@@ -24,7 +24,7 @@ class ArticlesControllerTest < ActionController::TestCase
   test "should create article" do
     sign_in User.find(1)
     assert_difference('Article.count') do
-      post :create, article: { availability: true, category_id: 1, description: "Une bière brune.", name: "Bière brune", picture_url: "...", price: 10.00 }
+      post :create, article: { availability: true, category_id: 1, description: "Une bière brune.", name: "Bière brune", price: 10.00 }
     end
 
     assert_redirected_to articles_path
@@ -44,7 +44,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
   test "should update article" do
     sign_in User.find(1)
-    patch :update, id: @article, article: { availability: @article.availability, category: @article.category, description: @article.description, name: @article.name, picture_url: @article.picture_url, price: @article.price }
+    patch :update, id: @article, article: { availability: @article.availability, category: @article.category, description: @article.description, name: @article.name, price: @article.price }
     assert_redirected_to articles_path
   end
 

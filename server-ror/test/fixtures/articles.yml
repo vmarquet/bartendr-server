@@ -6,7 +6,6 @@ blonde_beer:
   price: 9.99
   description: "Une bière blonde."
   category_id: 1
-  picture_url: todo
   availability: false
 
 pina_colada:
@@ -15,5 +14,4 @@ pina_colada:
   price: 9.99
   description: "Rhum, jus d'ananas et crème de coco."
   category_id: 2
-  picture_url: todo
   availability: true
