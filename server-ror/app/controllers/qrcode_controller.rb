@@ -53,7 +53,7 @@ class QrcodeController < ApplicationController
 				pdf.text "Table n°" + table.to_s
 
 				# text inside the QR code
-				qrcode = "Table n°" + table.to_s
+				qrcode = '{"table": ' + table.to_s + '}'
 
 				# we display the QR code inside the PDF
 				pdf.print_qr_code(qrcode, :extent => 144, :level => :h)
