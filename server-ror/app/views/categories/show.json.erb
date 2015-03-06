@@ -1,5 +1,5 @@
 [
-<% @articles.each do |article, index| %>
+<% @articles.each_with_index do |article, index| %>
 	{
 		"id": <%= article.id %>,
 		"name": <%= article.name.to_json.html_safe %>,
@@ -8,7 +8,7 @@
 		"size": "TODO",
 		"picture_url": <% if article.picture? %>"<%= article.picture.url %>"<% else %>null<% end %>
 	}
-	<% if not index == @category.article.count - 1 %>
+	<% if not index == @articles.count - 1 %>
 	,
 	<% end %>
 <% end %>
