@@ -47,95 +47,115 @@ function updateOrdersHTML(data) {
     // and we create a table inside it, containing the articles
     order = data[i];
 
-    // we create a new panel
-    orders_html += '<div class="panel panel-default">'
-
-    // we create the heading of the panel, and we fill it with order metadata
-    orders_html += '<div class="panel-heading"><div class="row">'
-
-    orders_html += '<div class="col-md-2">Commande n° ' + order.order_id + '</div>'
-    orders_html += '<div class="col-md-2"> Passée à ' + order.created_at + '</div>'
-    orders_html += '<div class="col-md-2"> Table n° ' + order.table + '</div>'
-
-    orders_html += '<div class="col-md-2">'
-    // stuff to compute how to display the buttons "paid" and "served"
-    var icon; var button_type;
-    if (order.is_paid.toString().localeCompare("true") == 0) {
-      icon = '<font color="white"> ✔ payé </font>';
-      button_type = 'btn-success';
-    }
-    else {
-      icon = '<font color="red"> ✘ non payé </font>';
-      button_type = 'btn-default';
-    }
-
-    orders_html += '<a class="btn btn-xs ' + button_type + '" \
-                       data-remote="true" data-method="patch" \
-                       href="/orders/' + order.order_id + '/ispaid" rel="nofollow"> \
-                       ' + icon + '</a>';
-
-    if (order.is_served.toString().localeCompare("true") == 0) {
-      icon = '<font color="white"> ✔ servi </font>';
-      button_type = 'btn-success';
-    }
-    else {
-      icon = '<font color="red"> ✘ non servi </font>';
-      button_type = 'btn-default';
-    }
-
-    orders_html += '<a class="btn btn-xs ' + button_type + '" \
-                       data-remote="true" data-method="patch" \
-                       href="/orders/' + order.order_id + '/isserved" rel="nofollow"> \
-                       ' + icon + '</a>';
-
-    orders_html += '</div>'
-
-    // the button "suppress"
-    orders_html += ' \
-          <div class="col-md-2"> \
-            <a class="btn btn-xs btn-danger" \
-               data-confirm="Êtes-vous sûr de vouloir supprimer cette commande ?" \
-               data-method="delete" href="/orders/' + order.order_id + '" rel="nofollow">Supprimer \
-            </a> \
-          </div>'
-
     // we compute the total price of the order (sum of all items)
     var j = 0; var price = 0;
     while (j < order.items.length) {
       price += order.items[j].price;
       j++;
     }
-    orders_html += '<div class="col-md-2"> Prix total: ' + price.toFixed(2) + ' €</div>'
+    price = price.toFixed(2);
 
-    // end of the panel heading
-    orders_html += '</div></div>'
+    // première colonne, le tier de gauche
+    orders_html += ' \
+<div class="row"> \
+  <div class="col-md-4"> \
+    <div class="panel panel-default"> \
+      <div class="panel-heading"> \
+        Commande n°' + order.order_id + ', passée à ' + order.created_at + ' \
+      </div> \
+      <ul class="list-group"> \
+        <li class="list-group-item">Prix total: <strong>' + price + '</strong> €</li> \
+        <li class="list-group-item">Table ' + order.table + '</li> \
+      </ul> \
+    </div> \
+  </div>';  // fin de la première colonne
 
-    // we create a table to display each item in the order
-    orders_html += '<table class="table"><tbody>'
-
+  // deuxième colonne, le tier du milieu
+  orders_html += ' \
+  <div class="col-md-4"> \
+    <table class="table"> \
+      <tbody>';
+    
+    // for each item in the command, we create a row in the table
     j = 0;
     while (j < order.items.length) {
       item = order.items[j];
       orders_html += ' \
-                <tr> \
-                  <td>Article: <strong>' + item.article + '</strong></td> \
-                  <td width="45%">' + item.comments + '</td> \
-                  <td>Quantité: <strong>1</strong></td> \
-                  <td width="150px">Prix: ' + item.price + ' €</td> \
-                </tr>'
+        <tr> \
+          <td><strong>' + item.article + '</strong></td> \
+          <td>' + item.comments + '</td> \
+          <td width="10%"><span class="badge">' + '1' + '</td> \
+        </tr>'
       j++;
     }
+    
+    orders_html += ' \
+      </tboby> \
+    </table> \
+  </div>';  // fin de la 2e colonne
 
-    // end of the items table
-    orders_html += '</tbody></table>'
+  // dernière colonne, le tier de droite
+  orders_html += ' \
+  <div class="col-md-4"> \
+    <div class="col-md-4">';
 
-    // end of the panel
-    orders_html += '</div>'
+    // we display a label depending on if the order was served
+    if (order.is_served.toString().localeCompare("true") == 0)
+      orders_html += '<span class="label label-success"> ✔ servi </span>';
+    else
+      orders_html += '<span class="label label-warning"> ✘ non servi </span>';
+      
+    orders_html += ' \
+    </div> \
+    <div class="col-md-4">';
+
+    // we display a label depending on if the order was paid
+    if (order.is_paid.toString().localeCompare("true") == 0)
+      orders_html += '<span class="label label-success"> ✔ payé </span>';
+    else
+      orders_html += '<span class="label label-warning"> ✘ non payé </span>';
+      
+    orders_html += ' \
+    </div> \
+    <div class="col-md-4"> \
+      <a class="btn btn-xs btn-danger" \
+        data-confirm="Êtes-vous sûr de vouloir supprimer cette commande ?" \
+        data-method="delete" href="/orders/' + order.order_id + '" rel="nofollow">Annuler \
+      </a> \
+    </div>';
+
+      // on n'affiche le bouton "indiquer comme payé"
+      // que si l'article n'est pas déjà payé
+      if (order.is_paid.toString().localeCompare("false") == 0) {
+        orders_html += ' \
+    <div class="col-md-12" style="margin-top: 6px;"> \
+      <a class="btn btn-primary btn-lg btn-block" data-remote="true" data-method="patch" \
+         href="/orders/' + order.order_id + '/ispaid" rel="nofollow"> \
+        Indiquer comme payé \
+      </a> \
+    </div>';
+      }
+
+      // on n'affiche le bouton "indiquer comme servi"
+      // que si l'article n'est pas déjà servi
+      if (order.is_served.toString().localeCompare("false") == 0) {
+        orders_html += ' \
+    <div class="col-md-12" style="margin-top: 6px;"> \
+      <a class="btn btn-primary btn-lg btn-block" data-remote="true" data-method="patch" \
+         href="/orders/' + order.order_id + '/isserved" rel="nofollow"> \
+        Indiquer comme servi \
+      </a> \
+    </div>';
+      }
+
+      orders_html += ' \
+  </div> \
+</div><br />';
 
     i++;
   }
 
-  orders_html += '</div>'
+  orders_html += '</div>'  // end <div id="orders-index-table">
 
   // we rewrite entirely the part of the page where the orders are displayed
   $("#orders-index-table").html(orders_html);
@@ -171,7 +191,7 @@ function launchUpdateProcess() {
   killFunctionsWithInterval();
 
   getOrdersJSON();  // we launch it the first time at the loading of the page
-  getOrdersJSON_interval1 = setInterval(getOrdersJSON, 20000); // interval in milliseconds
+  getOrdersJSON_interval1 = setInterval(getOrdersJSON, 10000); // interval in milliseconds
   getOrdersJSON_interval2 = setInterval(updateTimeSinceLastUpdate, 1000);
 }
 
