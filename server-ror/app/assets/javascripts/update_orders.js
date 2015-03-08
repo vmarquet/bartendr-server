@@ -61,7 +61,7 @@ function updateOrdersHTML(data) {
   <div class="col-md-4"> \
     <div class="panel panel-default"> \
       <div class="panel-heading"> \
-        Commande n°' + order.order_id + ', passée à ' + order.created_at + ' \
+        Commande n° ' + order.order_id + ', passée il y a ' + order.created_at + ' \
       </div> \
       <ul class="list-group"> \
         <li class="list-group-item">Prix total: <strong>' + price + '</strong> €</li> \

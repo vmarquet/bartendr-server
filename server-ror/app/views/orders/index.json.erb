@@ -1,10 +1,8 @@
-<%# cf http://stackoverflow.com/questions/6345383 %>
-
 [
 <% @orders.each_with_index do |order, index| %>
 	{
 		"order_id": <%= order.id %>,
-		"created_at": "<%= order.created_at.strftime("%H:%M") %>",
+		"created_at": "<%= time_ago_in_words order.created_at %>",
 		"is_paid": <%= order.is_paid %>,
 		"is_served": <%= order.is_served %>,
 		"table": "<%= order.table %>",
