@@ -33,12 +33,12 @@
       <div class="panel-heading">
         Articles dans la catégorie: <%= @category.name %>
       </div>
-      <% if @category.article.length == 0 %>
+      <% if @articles.length == 0 %>
         <div class="panel-body">Il n'y a aucun article dans cette catégorie.</div>
       <% else %>
         <table class="table">
           <tbody>
-            <% @category.article.each do |article| %>
+            <% @articles.each do |article| %>
               <tr>
                 <td><%= link_to article.name, article_url(article) %></td>
               </tr>

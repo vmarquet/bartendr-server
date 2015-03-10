@@ -10,7 +10,7 @@
       <dd><%= @article.name %></dd>
 
       <dt><strong><%= model_class.human_attribute_name(:catégorie) %>:</strong></dt>
-      <dd><%= @article.category.name %></dd>
+      <dd><%= link_to @article.category.name, category_url(@article.category) %></dd>
 
       <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
       <dd><%= @article.description %></dd>

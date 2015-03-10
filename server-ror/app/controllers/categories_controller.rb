@@ -24,7 +24,10 @@ class CategoriesController < ApplicationController
   def show
     # we allow only API access (JSON) when user is not identified, not HTML
     respond_to do |format|
-      format.html { if not user_signed_in?; redirect_to '/'; end }
+      format.html {
+        if not user_signed_in?; redirect_to '/'; return; end
+        @articles = @category.article.order('lower(name) ASC')
+      }
       format.json { @articles = @category.article.where('availability = ?', true).order('lower(name) ASC') }
     end
   end

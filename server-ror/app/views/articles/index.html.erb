@@ -20,7 +20,7 @@
             <tbody>
               <% category.article.order('lower(name) ASC').each do |article| %>
                 <tr>
-                  <td class="col-md-2"><%= article.name %></td>
+                  <td class="col-md-2"><%= link_to article.name, article_url(article) %></td>
                   <td class="col-md-5"><%= article.description %></td>
                   <td class="col-md-1"><%= number_to_currency(article.price, :locale => :fr) %></td>
                   <td class="col-md-2">
