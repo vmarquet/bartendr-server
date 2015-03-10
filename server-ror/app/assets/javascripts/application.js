@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-toggle.min.js
 //= require turbolinks
 //= require_tree .

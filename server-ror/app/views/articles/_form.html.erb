@@ -104,7 +104,9 @@
     <div class="controls">
       <div class="row">
         <div class="col-xs-1 col-xs-offset-1 col-sm-offset-1">
-          <%= f.check_box :availability, :class => 'form-control' %>
+          <%= f.check_box :availability, :class => 'bootstrap-toggle form-control',
+              "data-toggle" => :toggle, "data-size" => :mini, "data-onstyle" => :success,
+              "data-offstyle" => :warning, "data-on" => :dispo, "data-off" => :rupture %>
         </div>
       </div>
     </div>

@@ -24,10 +24,10 @@
                   <td class="col-md-5"><%= article.description %></td>
                   <td class="col-md-1"><%= number_to_currency(article.price, :locale => :fr) %></td>
                   <td class="col-md-2">
-                    <% if article.availability == true %>
-                      <span class="label label-success">disponible</span>
-                    <% else %>
-                      <span class="label label-warning">indisponible</span>
+                    <%= form_for article, method: :patch, remote: true do |f| %>
+                      <%= f.check_box :availability, :class => 'bootstrap-toggle submit-toggle',
+                        "data-toggle" => :toggle, "data-size" => :mini, "data-onstyle" => :success,
+                        "data-offstyle" => :warning, "data-on" => :dispo, "data-off" => :rupture, autocomplete: :off %>
                     <% end %>
                   </td>
                   <% if can? :update, Article or can? :destroy, Article %>

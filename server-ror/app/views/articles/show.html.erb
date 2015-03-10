@@ -21,9 +21,9 @@
       <dt><strong><%= model_class.human_attribute_name(:disponibilité) %>:</strong></dt>
       <dd>
         <% if @article.availability == true %>
-          <font color="green"> ✔ </font>
+          <span class="label label-success">Disponible</span>
         <% else %>
-          <font color="red"> ✘ </font>
+          <span class="label label-warning">Rupture de stock</span>
         <% end %>
       </dd>
     </dl>
