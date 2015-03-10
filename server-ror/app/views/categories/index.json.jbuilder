@@ -1,7 +1,7 @@
 json.array!(@categories) do |category|
   json.extract! category, :id, :name
   if category.picture?
-    json.picture_url category.picture_url
+    json.picture_url category.picture.url
   else
     json.picture_url nil
   end
