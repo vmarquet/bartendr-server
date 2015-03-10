@@ -1,17 +1,23 @@
 <div class="page-header">
-	<h1>Bienvenue dans BarTendr !</h1>
+  <h1>Bienvenue dans BarTendr !</h1>
 </div>
 
-  <h2>Modifier la liste des produits en vente</h2>
+<div class="row">
+  <div class="col-md-3">
+    <%= render partial: 'menu' %>
+  </div>
 
-    <p>Pour commencer, vous pouvez remplir la liste des boissons mises en vente en cliquant sur l'onglet <%= link_to '"Articles"', :controller => :articles, :action => :index %> de la barre de navigation, en haut à droite.</p>
+  <div class="col-md-9">
+    <h2>Pour les barmans</h2>
 
-    <p>Vous pouvez aussi indiquer quels sont les articles en rupture de stock au fur et à mesure de votre service, en décochant la case "Disponibilité", sur la page permettant de modifier un article.</p>
+      <p>Pour voir la liste des commandes passées par les clients, vous pouvez cliquer sur l'onglet <%= link_to '"Commandes"', :controller => :orders, :action => :index %> dans la barre de navigation, en haut à droite.</p>
 
-  <h2>Voir la liste des commandes passées</h2>
+      <p>Pensez aussi à indiquer quels sont les articles en rupture de stock au fur et à mesure de votre service, en utilisant le bouton sur la page permettant de voir la liste des articles.</p>
 
-    <p>Pour voir la liste des commandes passées par les clients, vous pouvez cliquer sur l'onglet <%= link_to '"Commandes"', :controller => :orders, :action => :index %> dans la barre de navigation, en haut à droite.</p>
+    <h2>Pour les managers</h2>
 
-  <h2>Générer les QR codes</h2>
+      <p>N'oubliez pas de remplir et de garder à jour la liste des boissons mises en vente en cliquant sur l'onglet <%= link_to '"Articles"', :controller => :articles, :action => :index %> de la barre de navigation, en haut à droite.</p>
 
-  	<p>Pour générer les QR codes qui permettent aux clients d'indiquer leur table au moment où ils commandent, cliquez <%= link_to 'ici', :controller => :qrcode, :action => :index %>.</p>
+  </div>
+</div>
+
