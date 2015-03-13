@@ -79,7 +79,43 @@ Nota bene: pour accélérérer un peu le `bundle install`, ne pas installer les 
 
 ### Configurer le serveur en mode production
 
-TODO
+Tout d'abord il y a quelques fichiers à modifier afin de configurer le mode production.
+
+Il faut ajouter au fichier config/environnement/production.rb :
+
+```
+config.assets.compile = true
+config.assets.precompile =  ['*.js', '*.css', '*.css.erb'] 
+```
+Ensuite, ajouter au fichier config/initializers/devise.rb :
+
+```
+config.secret_key = ENV["SECRET_KEY_BASE"]
+```
+Pour finir, il va falloir vous créer une variable local : SECRET_KEY_BASE 
+
+Cette variable est automatiquement généré par Rails, par la commande : (dans votre dossier du serveur)
+
+```
+rake secret
+```
+Copiez la clé généré et ajoutez la au fichiers : (Remplacez GENERATE_KEY par votre clé)
+~/.bash_profile
+/etc/profile
+
+```
+export SECRET_KEY_BASE=GENERATE_KEY
+```
+Il faudra relancer votre session pour que la clé soit dans votre environnement.
+
+Ensuite afin de précompiler et lancer le serveur en mode production : 
+
+```
+RAILS_ENV=production rake assets:precompile
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake db:seed
+RAILS_ENV=production rails s -e production
+```
 
 
 ### Lancement du serveur
