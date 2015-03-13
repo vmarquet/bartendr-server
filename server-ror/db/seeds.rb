@@ -19,10 +19,10 @@ Category.create(name: 'Boissons fraiches')			#Category_id = 9
 
 #Bières : Id = 1
 Article.create(name: 'Galopin', price: '1.30', description: '12,5 cl', category_id: '1')
-Article.create(name: 'Amstel', price: '2.50', description: 'Demi pression 25 cl', category_id: '1')
-Article.create(name: 'Affligem', price: '3.40', description: 'Demi pression 25 cl', category_id: '1')
-Article.create(name: 'Amstel', price: '4.50', description: 'Pinte pression 50 cl', category_id: '1')
-Article.create(name: 'Affligem', price: '5.50', description: 'Pinte pression 50 cl', category_id: '1')
+Article.create(name: 'Amstel 25cl', price: '2.50', description: 'Demi pression 25 cl', category_id: '1')
+Article.create(name: 'Affligem 25cl', price: '3.40', description: 'Demi pression 25 cl', category_id: '1')
+Article.create(name: 'Amstel 50cl', price: '4.50', description: 'Pinte pression 50 cl', category_id: '1')
+Article.create(name: 'Affligem 50cl', price: '5.50', description: 'Pinte pression 50 cl', category_id: '1')
 Article.create(name: 'Desperados', price: '5.00', description: 'Bouteille 33 cl', category_id: '1')
 Article.create(name: 'Bière blanche', price: '3.00', description: 'Bouteille 25 cl', category_id: '1')
 Article.create(name: '1664 blonde', price: '2.90', description: 'Bouteille 25 cl', category_id: '1')
