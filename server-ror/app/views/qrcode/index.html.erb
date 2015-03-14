@@ -3,10 +3,6 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
-    <%= render partial: 'welcome/menu' %>
-  </div>
-
   <div class="col-md-9">
     <h2>Utilité des QR codes</h2>
 
@@ -41,6 +37,9 @@
           <br /><br />
           <%= submit_tag "Générer les QR codes", { :class => "btn btn-primary" } %>
         <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= render partial: 'welcome/menu' %>
   </div>
 </div>
 

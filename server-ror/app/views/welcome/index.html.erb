@@ -3,10 +3,6 @@
 </div>
 
 <div class="row">
-  <div class="col-md-3">
-    <%= render partial: 'menu' %>
-  </div>
-
   <div class="col-md-9">
     <h2>Pour les barmans</h2>
 
@@ -18,6 +14,10 @@
 
       <p>N'oubliez pas de remplir et de garder à jour la liste des boissons mises en vente en cliquant sur l'onglet <%= link_to '"Articles"', :controller => :articles, :action => :index %> de la barre de navigation, en haut à droite.</p>
 
+  </div>
+
+  <div class="col-md-3">
+    <%= render partial: 'menu' %>
   </div>
 </div>
 
