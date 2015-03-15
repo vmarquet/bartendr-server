@@ -21,7 +21,7 @@ function getOrdersJSON() {
 
   $.ajax({
     type: 'GET',
-    url: "http://0.0.0.0:3000/orders.json",
+    url: "/orders.json",
     data: { get_param: 'value' },
     dataType: 'json',
     success: function (data) {
@@ -129,10 +129,10 @@ function updateOrdersHTML(data) {
       if (order.is_paid.toString().localeCompare("false") == 0) {
         orders_html += ' \
     <div class="col-md-12" style="margin-top: 6px;"> \
-      <a class="btn btn-primary btn-lg btn-block" data-remote="true" data-method="patch" \
-         href="/orders/' + order.order_id + '/ispaid" rel="nofollow"> \
+      <button class="btn btn-primary btn-lg btn-block" \
+              id="order-is-paid-button-' + order.order_id + '"> \
         Indiquer comme payé \
-      </a> \
+      </button> \
     </div>';
       }
 
@@ -141,10 +141,10 @@ function updateOrdersHTML(data) {
       if (order.is_served.toString().localeCompare("false") == 0) {
         orders_html += ' \
     <div class="col-md-12" style="margin-top: 6px;"> \
-      <a class="btn btn-primary btn-lg btn-block" data-remote="true" data-method="patch" \
-         href="/orders/' + order.order_id + '/isserved" rel="nofollow"> \
+      <button class="btn btn-primary btn-lg btn-block order-is-served-button" \
+              id="order-is-served-button-' + order.order_id + '"> \
         Indiquer comme servi \
-      </a> \
+      </button> \
     </div>';
       }
 
@@ -159,6 +159,43 @@ function updateOrdersHTML(data) {
 
   // we rewrite entirely the part of the page where the orders are displayed
   $("#orders-index-table").html(orders_html);
+
+  // we bound the buttons "Indiquer comme payé" and "Indiquer comme servi"
+  // to an AJAX call
+  // NB: the action to do when the onclick event is fired must be set
+  // AFTER the button has been inserted into the DOM
+  var i = 0;
+  while (i < data.length) {
+    order = data[i];
+
+    $("#order-is-paid-button-" + order.order_id).click(function() {
+      $.ajax({
+        url: "/orders/" + order.order_id,
+        method: "PATCH",
+        data: {"order": {"is_paid": true}},
+        dataType: "json",
+        success: function () {
+          $("#order-is-paid-button-" + order.order_id).fadeOut();
+        },
+        error: function (jqXHR, status, error) {}
+      })
+    });
+
+    $("#order-is-served-button-" + order.order_id).click(function() {
+      $.ajax({
+        url: "/orders/" + order.order_id,
+        method: "PATCH",
+        data: {"order": {"is_served": true}},
+        dataType: "json",
+        success: function () {
+          $("#order-is-served-button-" + order.order_id).fadeOut();
+        },
+        error: function (jqXHR, status, error) {}
+      })
+    });
+
+    i++;
+  }
 }
 
 // to display the time since last update

@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :orders
-  patch '/orders/:id/ispaid', to: 'orders#ispaid'
-  patch '/orders/:id/isserved', to: 'orders#isserved'
 
   get '/users', to: 'users#index'
   devise_for :users, path: 'auth', :controllers => { registrations: 'registrations' },

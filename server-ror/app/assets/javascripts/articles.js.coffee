@@ -4,7 +4,7 @@
 
 
 # must be executed each time a page containing bootstrap toggles is loaded
-onload = ->
+onload_articles_page = ->
     # each time a page containing bootstrap toggles is loaded
     # (and new toggle checkboxes are added to the DOM),
     # we must execute bootstrapToggle() again, otherwise the checkboxes won't work
@@ -17,5 +17,5 @@ onload = ->
         return
 
 
-$(document).ready(onload)            # when page loaded via HTTP
-$(document).on('page:load', onload)  # when page reloaded with TurboLinks
+$(document).ready(onload_articles_page)            # when page loaded via HTTP
+$(document).on('page:load', onload_articles_page)  # when page reloaded with TurboLinks
