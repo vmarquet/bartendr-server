@@ -79,7 +79,30 @@ Nota bene: pour accélérérer un peu le `bundle install`, ne pas installer les 
 
 ### Configurer le serveur en mode production
 
-TODO
+Il va falloir vous créer une variable local : SECRET_KEY_BASE 
+
+Cette variable est automatiquement généré par Rails, par la commande : (dans votre dossier du serveur)
+
+```
+rake secret
+```
+Copiez la clé généré et ajoutez la au fichiers : (Remplacez GENERATE_KEY par votre clé)
+~/.bash_profile
+/etc/profile
+
+```
+export SECRET_KEY_BASE=GENERATE_KEY
+```
+Il faudra relancer votre session pour que la clé soit dans votre environnement.
+
+Ensuite afin de précompiler et lancer le serveur en mode production : 
+
+```
+RAILS_ENV=production rake assets:precompile
+RAILS_ENV=production rake db:migrate
+RAILS_ENV=production rake db:seed
+rails s -e production
+```
 
 
 ### Lancement du serveur

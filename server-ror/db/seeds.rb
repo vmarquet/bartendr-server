@@ -14,15 +14,15 @@ Category.create(name: 'Vins')						#Category_id = 5
 Category.create(name: 'Digestifs')					#Category_id = 6
 Category.create(name: 'Jus de fruits')				#Category_id = 7
 Category.create(name: 'Boissons chaudes')			#Category_id = 8
-Category.create(name: 'Boissons fraiches')			#Category_id = 9
+Category.create(name: 'Boissons fraîches')			#Category_id = 9
 #Category.create(name: 'Shooters')					#Category_id = 10
 
 #Bières : Id = 1
 Article.create(name: 'Galopin', price: '1.30', description: '12,5 cl', category_id: '1')
-Article.create(name: 'Amstel', price: '2.50', description: 'Demi pression 25 cl', category_id: '1')
-Article.create(name: 'Affligem', price: '3.40', description: 'Demi pression 25 cl', category_id: '1')
-Article.create(name: 'Amstel', price: '4.50', description: 'Pinte pression 50 cl', category_id: '1')
-Article.create(name: 'Affligem', price: '5.50', description: 'Pinte pression 50 cl', category_id: '1')
+Article.create(name: 'Amstel 25cl', price: '2.50', description: 'Demi pression 25 cl', category_id: '1')
+Article.create(name: 'Affligem 25cl', price: '3.40', description: 'Demi pression 25 cl', category_id: '1')
+Article.create(name: 'Amstel 50cl', price: '4.50', description: 'Pinte pression 50 cl', category_id: '1')
+Article.create(name: 'Affligem 50cl', price: '5.50', description: 'Pinte pression 50 cl', category_id: '1')
 Article.create(name: 'Desperados', price: '5.00', description: 'Bouteille 33 cl', category_id: '1')
 Article.create(name: 'Bière blanche', price: '3.00', description: 'Bouteille 25 cl', category_id: '1')
 Article.create(name: '1664 blonde', price: '2.90', description: 'Bouteille 25 cl', category_id: '1')
@@ -62,9 +62,9 @@ Article.create(name: 'Dolce vita', price: '4.50', description: 'Jus d\'orange, j
 Article.create(name: 'Virgin colada', price: '4.50', description: 'Jus d\'ananas, crème de coco.', category_id: '4')
 
 #Vins : Id = 5
-Article.create(name: 'Sangria', price: '3.00', description: 'Le verre.', category_id: '5')
-Article.create(name: 'Sangria', price: '6.00', description: 'Le pichet', category_id: '5')
-Article.create(name: 'Sangria', price: '9.00', description: 'Le litre', category_id: '5')
+Article.create(name: 'Sangria (verre)', price: '3.00', description: 'Le verre.', category_id: '5')
+Article.create(name: 'Sangria (pichet)', price: '6.00', description: 'Le pichet', category_id: '5')
+Article.create(name: 'Sangria (1L)', price: '9.00', description: 'Le litre', category_id: '5')
 Article.create(name: 'Kir royal (Pêche)', price: '3.00', description: '', category_id: '5')
 Article.create(name: 'Kir royal (Mûre)', price: '3.00', description: '', category_id: '5')
 Article.create(name: 'Kir royal (Cassis)', price: '3.00', description: '', category_id: '5')
@@ -102,7 +102,7 @@ Article.create(name: 'Cappuccino', price: '2.50', description: '', category_id: 
 Article.create(name: 'Thé', price: '2.00', description: '', category_id: '8')
 Article.create(name: 'Café allongé', price: '1.30', description: '', category_id: '8')
 
-#Boissons froides : Id = 9
+#Boissons fraîches : Id = 9
 Article.create(name: 'Coca cola', price: '2.50', description: '', category_id: '9')
 Article.create(name: 'Coca light', price: '2.50', description: '', category_id: '9')
 Article.create(name: 'Orangina', price: '2.50', description: '', category_id: '9')
