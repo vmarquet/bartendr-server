@@ -15,4 +15,6 @@
 //= require twitter/bootstrap
 //= require bootstrap-toggle.min.js
 //= require turbolinks
+//= require jsapi
+//= require chartkick
 //= require_tree .

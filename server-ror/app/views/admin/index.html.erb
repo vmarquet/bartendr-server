@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>Statistiques</h1>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+    <div role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Commandes</a></li>
+      </ul>
+
+      <!-- Tabs content -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+          <br /><br />
+          <p style="text-align:center">Nombre de commandes, par jour:</p>
+          <%= column_chart Order.group_by_day(:archived_at) %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

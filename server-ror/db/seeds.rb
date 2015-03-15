@@ -117,3 +117,23 @@ Article.create(name: 'Sirop menthe', price: '1.80', description: '25 cl', catego
 Article.create(name: 'Sirop grenadine', price: '1.80', description: '25 cl', category_id: '9')
 Article.create(name: 'Sirop pêche', price: '1.80', description: '25 cl', category_id: '9')
 Article.create(name: 'Sirop fraise', price: '1.80', description: '25 cl', category_id: '9')
+
+
+# we create 100 orders
+for i in 0..100
+  table = rand(100) + 1
+  order_items = []
+  # we affect some items to the order, between 1 and 10
+  for i in 1..rand(10)
+    article_id = rand(Article.all.size) + 1
+    order_items << Item.new(article_id: article_id)
+  end
+  # we create a random date, during the last month
+  archived_at = rand(30).days.ago
+  # finally we can create the order
+  Order.create table: table, items: order_items, is_paid: true, is_served: true, archived_at: archived_at
+end
+
+
+
+

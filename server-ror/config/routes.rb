@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/qrcode',     to: 'qrcode#index'
   get '/qrcode/pdf', to: 'qrcode#render_pdf'
 
+  get '/stats', to: 'admin#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
