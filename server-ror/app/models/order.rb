@@ -23,8 +23,8 @@ class Order < ActiveRecord::Base
 	private
 
 	def archive_if_necessary
-		if self.is_paid and self.is_served and self.archived_date == nil
-			self.archived_date = DateTime.now
+		if self.is_paid and self.is_served and self.archived_at == nil
+			self.archived_at = DateTime.now
 		end
 	end
 

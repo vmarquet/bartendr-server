@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150315162717) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "table",                  null: false
-    t.datetime "archived_date"
+    t.datetime "archived_at"
   end
 
   create_table "roles", force: true do |t|

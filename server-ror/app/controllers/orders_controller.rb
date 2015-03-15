@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where archived_date: nil
+    @orders = Order.where archived_at: nil
   end
 
   # GET /orders/1
