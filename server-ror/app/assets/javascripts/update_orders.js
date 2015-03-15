@@ -130,7 +130,8 @@ function updateOrdersHTML(data) {
         orders_html += ' \
     <div class="col-md-12" style="margin-top: 6px;"> \
       <button class="btn btn-primary btn-lg btn-block" \
-              id="order-is-paid-button-' + order.order_id + '"> \
+              id="order-is-paid-button-' + order.order_id + '" \
+              data-order_id="' + order.order_id + '"> \
         Indiquer comme payé \
       </button> \
     </div>';
@@ -142,7 +143,8 @@ function updateOrdersHTML(data) {
         orders_html += ' \
     <div class="col-md-12" style="margin-top: 6px;"> \
       <button class="btn btn-primary btn-lg btn-block order-is-served-button" \
-              id="order-is-served-button-' + order.order_id + '"> \
+              id="order-is-served-button-' + order.order_id + '" \
+              data-order_id="' + order.order_id + '"> \
         Indiquer comme servi \
       </button> \
     </div>';
@@ -169,26 +171,28 @@ function updateOrdersHTML(data) {
     order = data[i];
 
     $("#order-is-paid-button-" + order.order_id).click(function() {
+      var order_id = this.dataset.order_id;
       $.ajax({
-        url: "/orders/" + order.order_id,
+        url: "/orders/" + order_id,
         method: "PATCH",
         data: {"order": {"is_paid": true}},
         dataType: "json",
         success: function () {
-          $("#order-is-paid-button-" + order.order_id).fadeOut();
+          $("#order-is-paid-button-" + order_id).fadeOut();
         },
         error: function (jqXHR, status, error) {}
       })
     });
 
     $("#order-is-served-button-" + order.order_id).click(function() {
+      var order_id = this.dataset.order_id;
       $.ajax({
-        url: "/orders/" + order.order_id,
+        url: "/orders/" + order_id,
         method: "PATCH",
         data: {"order": {"is_served": true}},
         dataType: "json",
         success: function () {
-          $("#order-is-served-button-" + order.order_id).fadeOut();
+          $("#order-is-served-button-" + order_id).fadeOut();
         },
         error: function (jqXHR, status, error) {}
       })
