@@ -16,7 +16,17 @@ class Order < ActiveRecord::Base
 	# before the creation, we set default values for tags
 	before_create :set_default_values
 
+	# if both "is_paid" and "is_served" are true, we archive the order
+	before_save :archive_if_necessary
+
+
 	private
+
+	def archive_if_necessary
+		if self.is_paid and self.is_served and self.archived_date == nil
+			self.archived_date = DateTime.now
+		end
+	end
 
 	# we set default values (don't accept the ones from the application user)
 	def set_default_values
