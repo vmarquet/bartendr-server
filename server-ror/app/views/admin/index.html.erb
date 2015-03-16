@@ -10,15 +10,31 @@
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Commandes</a></li>
+        <li role="presentation" class="active"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Commandes</a></li>
+        <li role="presentation"><a href="#categories" aria-controls="categories" role="tab" data-toggle="tab">Catégories</a></li>
       </ul>
 
       <!-- Tabs content -->
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">
+        <div role="tabpanel" class="tab-pane active" id="orders">
           <br /><br />
           <p style="text-align:center">Nombre de commandes, par jour:</p>
           <%= column_chart Order.group_by_day(:archived_at) %>
+
+          <br /><br />
+          <p style="text-align:center">Revenus, par jour:</p>
+          <%= column_chart @histogram_1_data %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="categories">
+          <br /><br />
+          <div class="col-md-6">
+            <p>Catégories, en fonction du nombre d'articles en vente:</p>
+            <%= pie_chart @pie_chart_1_data %>
+          </div>
+          <div class="col-md-6">
+            <p>Catégories, en fonction du nombre d'items commandés appartenant à la catégorie:</p>
+            <%= pie_chart @pie_chart_2_data %>
+          </div>
         </div>
       </div>
 
