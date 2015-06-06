@@ -1,27 +1,27 @@
 [
 <% @orders.each_with_index do |order, index| %>
-	{
-		"order_id": <%= order.id %>,
-		"created_at": "<%= time_ago_in_words order.created_at %>",
-		"is_paid": <%= order.is_paid %>,
-		"is_served": <%= order.is_served %>,
-		"table": "<%= order.table %>",
-		"items": [
-		<% order.items.each_with_index do |item, index2| %>
-			{
-				"article": "<%= item.article.name %>",
-				"comments": "<%= item.comments %>",
-				"price": <%= item.price %>,
-				"quantity": 1
-			}
-			<% if not index2 == order.items.count - 1%>
-			,
-			<% end %>
-		<% end %>
-		]
-	}
-	<% if not index == @orders.count - 1%>
-	,
-	<% end %>
+  {
+    "order_id": <%= order.id %>,
+    "created_at": "<%= time_ago_in_words order.created_at %>",
+    "is_paid": <%= order.is_paid %>,
+    "is_served": <%= order.is_served %>,
+    "table": "<%= order.table %>",
+    "items": [
+    <% order.items.each_with_index do |item, index2| %>
+      {
+        "article": "<%= item.article.name %>",
+        "comments": "<%= item.comments %>",
+        "price": <%= item.price %>,
+        "quantity": 1
+      }
+      <% if not index2 == order.items.count - 1%>
+      ,
+      <% end %>
+    <% end %>
+    ]
+  }
+  <% if not index == @orders.count - 1%>
+  ,
+  <% end %>
 <% end %>
 ]

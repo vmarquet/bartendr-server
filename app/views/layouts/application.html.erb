@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>BarTendr</title>
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= stylesheet_link_tag    'navbar' %>
-		<%= stylesheet_link_tag    'custom' %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= csrf_meta_tags %>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title>BarTendr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'navbar' %>
+    <%= stylesheet_link_tag    'custom' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-	</head>
+  </head>
 
 
-	<body>
+  <body>
 
-		<div id='navbar'>
-			<div>
-				BarTendr
-			</div>
-			<ul>
-				<% if user_signed_in? %>
-					<li><a href='/'>Accueil</a></li>
-					<li><%= link_to "Commandes", orders_path %></li>
-					<li><%= link_to "Articles", articles_path %></li>
-					<li><%= link_to "Staff", users_path, :class => 'navbar-link' %></li>
-					<li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
-				<% else %>
-					<li><%= link_to t("devise.common.sign_in"), new_user_session_path, :class => 'navbar-link'  %></li>
-					<li><%= link_to t("devise.common.sign_up"), new_user_registration_path, :class => 'navbar-link' %></li>
-				<% end %>
-			</ul>
-		</div>
+    <div id='navbar'>
+      <div>
+        BarTendr
+      </div>
+      <ul>
+        <% if user_signed_in? %>
+          <li><a href='/'>Accueil</a></li>
+          <li><%= link_to "Commandes", orders_path %></li>
+          <li><%= link_to "Articles", articles_path %></li>
+          <li><%= link_to "Staff", users_path, :class => 'navbar-link' %></li>
+          <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+        <% else %>
+          <li><%= link_to t("devise.common.sign_in"), new_user_session_path, :class => 'navbar-link'  %></li>
+          <li><%= link_to t("devise.common.sign_up"), new_user_registration_path, :class => 'navbar-link' %></li>
+        <% end %>
+      </ul>
+    </div>
 
-		<% unless notice.nil? %>
-			<p class="notice alert alert-info" role="alert"><%= notice %></p>
-		<% end %>
+    <% unless notice.nil? %>
+      <p class="notice alert alert-info" role="alert"><%= notice %></p>
+    <% end %>
 
-		<% unless alert.nil? %>
-			<p class="alert alert-danger" role="alert"><%= alert %></p>
-		<% end %>
+    <% unless alert.nil? %>
+      <p class="alert alert-danger" role="alert"><%= alert %></p>
+    <% end %>
 
-		<div class="container">
-			<%= yield %>
-		</div>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-	</body>
+  </body>
 
 </html>

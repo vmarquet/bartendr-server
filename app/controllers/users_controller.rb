@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     end
 
     @users_not_approved = User.where(["approved = ?", false])
-  	@users = User.where(["approved = ?", true])
+    @users = User.where(["approved = ?", true])
   end
 
   def approve

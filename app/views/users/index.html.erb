@@ -1,93 +1,94 @@
 <div class="page-header">
-	<h1>Staff</h1>
+  <h1>Staff</h1>
 </div>
 
 <!-- if there are users waiting for being approved,
      and if the current user is a bartender, we display a message on top of the page -->
 <% if current_user.has_role? :bartender or current_user.has_role? :admin %>
-	<% if @users_not_approved.size == 0 and defined? @show_message_even_if_all_user_approved != nil %>
-		<div class="row">
-			<div class="alert alert-success" role="alert">
-				<%= t "bartendr.account_activation.all_approved" %>
-			</div>
-		</div>
-	<% elsif @users_not_approved.size > 0 %>
-		<div class="row">
-			<div class="alert alert-warning" role="alert">
-				<%= t "bartendr.account_activation.some_not_approved" %><br />
-				<table class="table">
-					<thead>
-						<tr>
-							<th><%= t "devise.form.first_name" %></th>
-							<th><%= t "devise.form.last_name" %></th>
-							<th><%= t "devise.form.email" %></th>
-							<th> Actions </th>
-						</tr>
-					</thead>
-					<tbody>
-						<% for user in @users_not_approved %>
-							<tr>
-								<td><%= user.first_name %></td>
-								<td><%= user.last_name %></td>
-								<td><%= mail_to user.email %></td>
-								<td>
-									<%= link_to 'Donner les droits "barman"',
-									    "/users/" + user.id.to_s, :method => 'patch',
-									    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
-									    :class => 'btn btn-success btn-xs' %>
+  <% if @users_not_approved.size == 0 and defined? @show_message_even_if_all_user_approved != nil %>
+    <div class="row">
+      <div class="alert alert-success" role="alert">
+        <%= t "bartendr.account_activation.all_approved" %>
+      </div>
+    </div>
+  <% elsif @users_not_approved.size > 0 %>
+    <div class="row">
+      <div class="alert alert-warning" role="alert">
+        <%= t "bartendr.account_activation.some_not_approved" %><br />
+        <table class="table">
+          <thead>
+            <tr>
+              <th><%= t "devise.form.first_name" %></th>
+              <th><%= t "devise.form.last_name" %></th>
+              <th><%= t "devise.form.email" %></th>
+              <th> Actions </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for user in @users_not_approved %>
+              <tr>
+                <td><%= user.first_name %></td>
+                <td><%= user.last_name %></td>
+                <td><%= mail_to user.email %></td>
+                <td>
+                  <%= link_to 'Donner les droits "barman"',
+                      "/users/" + user.id.to_s, :method => 'patch',
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
+                      :class => 'btn btn-success btn-xs' %>
 
-									<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-									    "/users/" + user.id.to_s, :method => 'delete',
-									    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
-									    :class => 'btn btn-danger btn-xs' %>
-								</td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	<% end %>
+                  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      "/users/" + user.id.to_s, :method => 'delete',
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Etes-vous sûr ?')) },
+                      :class => 'btn btn-danger btn-xs' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 
 <div class="row">
-	<div class="panel panel-default">
-		<table class="table panel-body">
-			<thead>
-				<tr>
-					<th><%= t "devise.form.first_name" %></th>
-					<th><%= t "devise.form.last_name" %></th>
-					<th><%= t "devise.form.email" %></th>
-					<th> Permissions </th>
-					<th> Actions </th>
-				</tr>
-			</thead>
-			<tbody>
-				<% for user in @users %>
-					<tr>
-						<td><%= user.first_name %></td>
-						<td><%= user.last_name %></td>
-						<td><%= mail_to user.email %></td>
-						<td>
-							<% if user.has_role? :admin %>
-								<span class="label label-success">admin</span>
-							<% end %>
-							<% if user.has_role? :bartender %>
-								<span class="label label-success">bartender</span>
-							<% end %>
-							<% if user.has_role? :barman %>
-								<span class="label label-success">barman</span>
-							<% end %>
-						</td>
-						<td>
-							<% if user == current_user %>
-								<%= link_to "Modifier le profil",
-                					edit_user_registration_path, :class => 'btn btn-primary btn-xs' %>
-                			<% end %>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
+  <div class="panel panel-default">
+    <table class="table panel-body">
+      <thead>
+        <tr>
+          <th><%= t "devise.form.first_name" %></th>
+          <th><%= t "devise.form.last_name" %></th>
+          <th><%= t "devise.form.email" %></th>
+          <th> Permissions </th>
+          <th> Actions </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for user in @users %>
+          <tr>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= mail_to user.email %></td>
+            <td>
+              <% if user.has_role? :admin %>
+                <span class="label label-success">admin</span>
+              <% end %>
+              <% if user.has_role? :bartender %>
+                <span class="label label-success">bartender</span>
+              <% end %>
+              <% if user.has_role? :barman %>
+                <span class="label label-success">barman</span>
+              <% end %>
+            </td>
+            <td>
+              <% if user == current_user %>
+                <%= link_to "Modifier le profil", edit_user_registration_path,
+                            :class => 'btn btn-primary btn-xs' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+

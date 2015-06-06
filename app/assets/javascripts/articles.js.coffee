@@ -4,18 +4,18 @@
 
 
 # must be executed each time a page containing bootstrap toggles is loaded
-onload_articles_page = ->
-    # each time a page containing bootstrap toggles is loaded
-    # (and new toggle checkboxes are added to the DOM),
-    # we must execute bootstrapToggle() again, otherwise the checkboxes won't work
-    $(".bootstrap-toggle").bootstrapToggle()
+onload = ->
+  # each time a page containing bootstrap toggles is loaded
+  # (and new toggle checkboxes are added to the DOM),
+  # we must execute bootstrapToggle() again, otherwise the checkboxes won't work
+  $(".bootstrap-toggle").bootstrapToggle()
 
-    # when a button is toggled on the articles index page,
-    # we submit the form to the server
-    $(".submit-toggle").change ->
-        $(this).closest('form').submit()
-        return
+  # when a button is toggled on the articles index page,
+  # we submit the form to the server
+  $(".submit-toggle").change ->
+    $(this).closest('form').submit()
+    return
 
 
-$(document).ready(onload_articles_page)            # when page loaded via HTTP
-$(document).on('page:load', onload_articles_page)  # when page reloaded with TurboLinks
+$(document).ready(onload)            # when page loaded via HTTP
+$(document).on('page:load', onload)  # when page reloaded with TurboLinks
